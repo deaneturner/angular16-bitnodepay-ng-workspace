@@ -23,13 +23,13 @@
                 <p-autoComplete appendTo="body" inputId="members" [(ngModel)]="task.members" [suggestions]="filteredMembers" (completeMethod)="filterMembers($event)" field="name" [multiple]="true" placeholder="Choose team members" [inputStyle]="{'height': '2.5rem'}">
                     <ng-template let-member pTemplate="selectedItem">
                         <div class="flex align-items-center">
-                            <img src="assets/demo/images/avatar/{{member.image}}" [alt]="member.name" class="h-2rem w-2rem mr-2">
+                            <img src="assets//images/avatar/{{member.image}}" [alt]="member.name" class="h-2rem w-2rem mr-2">
                             <span class="text-900 font-medium">{{member.name}}</span>
                         </div>
                     </ng-template>
                     <ng-template let-member pTemplate="item">
                         <div class="flex align-items-center border-round">
-                            <img src="assets/demo/images/avatar/{{member.image}}" [alt]="member.name" class="h-2rem w-2rem mr-2">
+                            <img src="assets//images/avatar/{{member.image}}" [alt]="member.name" class="h-2rem w-2rem mr-2">
                             <span class="text-900 font-medium">{{member.name}}</span>
                         </div>
                     </ng-template>

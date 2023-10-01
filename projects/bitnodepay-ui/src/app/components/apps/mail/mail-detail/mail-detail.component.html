@@ -2,7 +2,7 @@
     <div class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-5 pt-5 md:pt-0 gap-4 md:border-top-none border-top-1 surface-border">
         <div class="flex align-items-center md:justify-content-start">
             <button pButton pRipple type="button" icon="pi pi-chevron-left" class="p-button-text p-button-plain md:mr-3" (click)="goBack()"></button>
-            <p-avatar *ngIf="mail && mail.image" [image]="'assets/demo/images/avatar/' + mail.image" size="large" shape="circle" styleClass="border-2 surface-border"></p-avatar>
+            <p-avatar *ngIf="mail && mail.image" [image]="'assets//images/avatar/' + mail.image" size="large" shape="circle" styleClass="border-2 surface-border"></p-avatar>
             <div class="flex flex-column mx-3">
                 <span class="block text-900 font-bold text-lg">{{mail.from}}</span>
                 <span class="block text-900 font-semibold">To: {{mail.email || mail.to}}</span>

@@ -41,7 +41,7 @@ export class ChatService {
     constructor(private http: HttpClient) { }
 
     getChatData() {
-        return this.http.get<any>('assets/demo/data/chat.json')
+        return this.http.get<any>('assets//data/chat.json')
             .toPromise()
             .then(res => res.data as any[])
             .then(data => data);

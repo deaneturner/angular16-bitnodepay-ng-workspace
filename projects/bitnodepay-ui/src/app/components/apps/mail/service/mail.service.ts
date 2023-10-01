@@ -14,7 +14,7 @@ export class MailService {
     mails$ = this.mails.asObservable();
 
     constructor(private http: HttpClient) {
-        this.http.get<any>('assets/demo/data/mail.json')
+        this.http.get<any>('assets//data/mail.json')
             .toPromise()
             .then(res => res.data as Mail[])
             .then(data => {

@@ -11,7 +11,7 @@ export class CustomerService {
 
     getCustomersSmall() {
         return this.http
-            .get<any>('assets/demo/data/customers-small.json')
+            .get<any>('assets//data/customers-small.json')
             .toPromise()
             .then((res) => res.data as Customer[])
             .then((data) => data);
@@ -19,7 +19,7 @@ export class CustomerService {
 
     getCustomersMedium() {
         return this.http
-            .get<any>('assets/demo/data/customers-medium.json')
+            .get<any>('assets//data/customers-medium.json')
             .toPromise()
             .then((res) => res.data as Customer[])
             .then((data) => data);
@@ -27,7 +27,7 @@ export class CustomerService {
 
     getCustomersLarge() {
         return this.http
-            .get<any>('assets/demo/data/customers-large.json')
+            .get<any>('assets//data/customers-large.json')
             .toPromise()
             .then((res) => res.data as Customer[])
             .then((data) => data);

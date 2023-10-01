@@ -13,7 +13,7 @@ export class IconService {
 
     selectedIcon: any;
 
-    apiUrl = 'assets/demo/data/icons.json';
+    apiUrl = 'assets//data/icons.json';
 
     getIcons() {
         return this.http.get(this.apiUrl).pipe(map((response: any) => {

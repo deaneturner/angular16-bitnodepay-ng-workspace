@@ -1,7 +1,7 @@
 <div class="flex flex-column h-full">
     <div class="flex align-items-center border-bottom-1 surface-border p-3 lg:p-6">
         <div class="relative flex align-items-center mr-3">
-            <img src="assets/demo/images/avatar/{{user.image}}" alt="user.name" class="w-4rem h-4rem border-circle shadow-4">
+            <img src="assets//images/avatar/{{user.image}}" alt="user.name" class="w-4rem h-4rem border-circle shadow-4">
             <span class="w-1rem h-1rem border-circle border-2 surface-border absolute bottom-0 right-0" [ngClass]="{'bg-green-400': user.status === 'active', 'bg-red-400': user.status === 'busy', 'bg-yellow-400': user.status === 'away'}"></span>
         </div>
         <div class="mr-2">
@@ -17,7 +17,7 @@
         <div *ngFor="let message of user.messages">
             <div *ngIf="message.ownerId !== 123" class="grid grid-nogutter mb-4">
                 <div class="mr-3 mt-1">
-                    <img src="assets/demo/images/avatar/{{user.image}}" alt="user.name" class="w-3rem h-3rem border-circle shadow-4">
+                    <img src="assets//images/avatar/{{user.image}}" alt="user.name" class="w-3rem h-3rem border-circle shadow-4">
                 </div>
                 <div class="col mt-3">
                     <p class="text-900 font-semibold mb-3">{{user.name}}</p>
