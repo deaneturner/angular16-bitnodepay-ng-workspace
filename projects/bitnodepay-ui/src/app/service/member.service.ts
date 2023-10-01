@@ -11,7 +11,7 @@ export class MemberService {
     constructor(private http: HttpClient) { }
 
     getMembers() {
-        return this.http.get<any>('assets/demo/data/members.json')
+        return this.http.get<any>('assets//data/members.json')
             .toPromise()
             .then(res => res.data as Member[])
             .then(data => data);

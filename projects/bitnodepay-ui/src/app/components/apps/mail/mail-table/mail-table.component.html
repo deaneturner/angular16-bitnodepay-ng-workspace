@@ -7,7 +7,7 @@
                 <button pButton pRipple type="button" icon="pi pi-ellipsis-v" class="p-button-rounded p-button-text p-button-plain ml-3" (click)="menu.toggle($event)"></button>
                 <p-menu #menu [model]="menuItems" [appendTo]="dt" [popup]="true"></p-menu>
             </div>
-            
+
             <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
                 <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Search Mail" class="w-full sm:w-auto"/>
@@ -30,7 +30,7 @@
                 </span>
             </td>
             <td style="min-width: 4rem">
-                <p-avatar [image]="mail.image ? 'assets/demo/images/avatar/' + mail.image : 'assets/layout/images/avatar.png'"></p-avatar>
+                <p-avatar [image]="mail.image ? 'assets//images/avatar/' + mail.image : 'assets/layout/images/avatar.png'"></p-avatar>
             </td>
             <td style="min-width: 12rem" class="text-900 font-semibold">
                 {{mail.from || mail.to}}

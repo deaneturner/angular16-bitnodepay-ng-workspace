@@ -26,7 +26,7 @@ export class KanbanService {
     listNames$ = this.listNames.asObservable();
 
     constructor(private http: HttpClient) {
-        this.http.get<any>('assets/demo/data/kanban.json')
+        this.http.get<any>('assets//data/kanban.json')
         .toPromise()
         .then(res => res.data as KanbanList[])
         .then(data => {

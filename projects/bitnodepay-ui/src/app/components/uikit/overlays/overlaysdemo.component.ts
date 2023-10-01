@@ -36,20 +36,20 @@ export class OverlaysDemoComponent implements OnInit {
 
         this.images = [];
         this.images.push({
-            source: 'assets/demo/images/sopranos/sopranos1.jpg',
-            thumbnail: 'assets/demo/images/sopranos/sopranos1_small.jpg', title: 'Sopranos 1'
+            source: 'assets//images/sopranos/sopranos1.jpg',
+            thumbnail: 'assets//images/sopranos/sopranos1_small.jpg', title: 'Sopranos 1'
         });
         this.images.push({
-            source: 'assets/demo/images/sopranos/sopranos2.jpg',
-            thumbnail: 'assets/demo/images/sopranos/sopranos2_small.jpg', title: 'Sopranos 2'
+            source: 'assets//images/sopranos/sopranos2.jpg',
+            thumbnail: 'assets//images/sopranos/sopranos2_small.jpg', title: 'Sopranos 2'
         });
         this.images.push({
-            source: 'assets/demo/images/sopranos/sopranos3.jpg',
-            thumbnail: 'assets/demo/images/sopranos/sopranos3_small.jpg', title: 'Sopranos 3'
+            source: 'assets//images/sopranos/sopranos3.jpg',
+            thumbnail: 'assets//images/sopranos/sopranos3_small.jpg', title: 'Sopranos 3'
         });
         this.images.push({
-            source: 'assets/demo/images/sopranos/sopranos4.jpg',
-            thumbnail: 'assets/demo/images/sopranos/sopranos4_small.jpg', title: 'Sopranos 4'
+            source: 'assets//images/sopranos/sopranos4.jpg',
+            thumbnail: 'assets//images/sopranos/sopranos4_small.jpg', title: 'Sopranos 4'
         });
     }
 
