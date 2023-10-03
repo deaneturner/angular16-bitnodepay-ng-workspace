@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
     constructor(private primengConfig: PrimeNGConfig,
                 private dockerContainerService: DockerContainerService) {
       // TEST docker container service via socket
-      dockerContainerService.getContainerCPUInfoById('a89e1fbd2b2ef85a1029d0a781dcba8f52c70db5923451bef61c80541d063ec9');
+      dockerContainerService.getContainerCPUInfoById('78a12d9321c52b099f6949e47845b16d7b0f8d40dcf2829c1b761f0758de5aa1');
     }
 
     ngOnInit(): void {
