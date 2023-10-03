@@ -3,10 +3,10 @@ RUN addgroup app && adduser -S -G app app
 USER app
 WORKDIR /dist/src/app
 #COPY package*.json .
-RUN npm cache clean --force
+#RUN npm cache clean --force
 COPY . .
-RUN npm install
-RUN npm run build bitnodepay-ui --prod
+RUN yarn
+RUN yarn run build bitnodepay-ui
 # Serve Application using Nginx Server
 FROM nginx AS ngi
 COPY --from=build /dist/src/app/dist/bitnodepay-ui /usr/share/nginx/html
