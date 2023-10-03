@@ -7,10 +7,7 @@ import {map} from "rxjs/operators";
 })
 export class DockerContainerService {
 
-  constructor(private socket: Socket) {
-    debugger;
-    this.getContainerCPUInfoById('a89e1fbd2b2ef85a1029d0a781dcba8f52c70db5923451bef61c80541d063ec9');
-  }
+  constructor(private socket: Socket) {}
 
   sendMessage(msg: string) {
     this.socket.emit('message', msg);
