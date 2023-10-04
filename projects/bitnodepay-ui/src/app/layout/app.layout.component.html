@@ -2,7 +2,7 @@
 
 <div class="layout-container" [ngClass]="containerClass">
     <div class="layout-content-wrapper">
-      <p-messages [value]="notificationService.messages"></p-messages>
+      <p-messages [value]="notificationService.messages" (valueChange)="notificationService.messageValueChange(notificationService.messages)"></p-messages>
         <app-topbar>
         </app-topbar>
         <app-breadcrumb class="content-breadcrumb"></app-breadcrumb>
