@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { CalendarModule } from 'primeng/calendar';
+import {ToastModule} from "primeng/toast";
 
 @NgModule({
     declarations: [
@@ -33,24 +34,25 @@ import { CalendarModule } from 'primeng/calendar';
         AppMenuComponent,
         AppMenuitemComponent
     ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        InputTextModule,
-        SidebarModule,
-        BadgeModule,
-        RadioButtonModule,
-        InputSwitchModule,
-        ButtonModule,
-        TooltipModule,
-        RippleModule,
-        RouterModule,
-        AppConfigModule,
-        StyleClassModule,
-        CalendarModule,
-        
-    ]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    InputTextModule,
+    SidebarModule,
+    BadgeModule,
+    RadioButtonModule,
+    InputSwitchModule,
+    ButtonModule,
+    TooltipModule,
+    RippleModule,
+    RouterModule,
+    AppConfigModule,
+    StyleClassModule,
+    CalendarModule,
+    ToastModule,
+
+  ]
 })
 export class AppLayoutModule { }
