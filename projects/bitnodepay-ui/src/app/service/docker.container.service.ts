@@ -25,7 +25,8 @@ export class DockerContainerService implements OnDestroy {
   }
 
   private socketContainers() {
-    this.getContainerCPUInfoById('5c6eecc37462aea1efc9f372b9366232c8d5209ceabd24b626aa07d59c6d7d57');
+    // this.getContainerCPUInfoById('5c6eecc37462aea1efc9f372b9366232c8d5209ceabd24b626aa07d59c6d7d57');
+    this.getContainersInfo('5c6eecc37462aea1efc9f372b9366232c8d5209ceabd24b626aa07d59c6d7d57');
   }
 
   sendMessage(msg: string) {
@@ -38,13 +39,28 @@ export class DockerContainerService implements OnDestroy {
   getContainerCPUInfoById(id: string) {
     this.socket.emit('getSysInfo', id);
     this.socket.once(id, (data: any) => {
-      this.notificationService.showMessage({severity: MessageErrorType.success, summary: 'Container Service: Connected!', detail: ''})
+      this.notificationService.showMessage({severity: MessageErrorType.success, summary: 'Container CPU Info Service: Connected!', detail: ''})
     });
     this.socket.on(id, (data: any) => {
       console.log(data);
     });
     this.socket.on('end', (status: any) => {
       console.log("[END] getContainerCPUInfoById");
+    });
+  }
+
+  // containerInfo
+  // getContainersInfo
+  getContainersInfo(id: string) {
+    this.socket.emit('getContainersInfo', id);
+    this.socket.once('containerInfo', (data: any) => {
+      this.notificationService.showMessage({severity: MessageErrorType.success, summary: 'Containers Info Service: Connected!', detail: ''})
+    });
+    this.socket.on('containerInfo', (data: any) => {
+      console.log(data);
+    });
+    this.socket.on('end', (status: any) => {
+      console.log("[END] getContainersInfo");
     });
   }
 
