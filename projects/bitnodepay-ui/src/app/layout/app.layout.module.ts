@@ -23,6 +23,7 @@ import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { CalendarModule } from 'primeng/calendar';
 import {ToastModule} from "primeng/toast";
+import {MessagesModule} from "primeng/messages";
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import {ToastModule} from "primeng/toast";
     StyleClassModule,
     CalendarModule,
     ToastModule,
+    MessagesModule,
 
   ]
 })

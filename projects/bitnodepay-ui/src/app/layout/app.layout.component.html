@@ -1,7 +1,10 @@
-<p-toast key="tst"></p-toast>
+<p-toast key="notifications"></p-toast>
+
 <div class="layout-container" [ngClass]="containerClass">
     <div class="layout-content-wrapper">
-        <app-topbar></app-topbar>
+      <p-messages [value]="notificationService.messages"></p-messages>
+        <app-topbar>
+        </app-topbar>
         <app-breadcrumb class="content-breadcrumb"></app-breadcrumb>
         <div class="layout-content">
             <router-outlet></router-outlet>
