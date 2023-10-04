@@ -1,6 +1,6 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {Socket, SocketIoConfig} from "ngx-socket-io";
-import {map, tap} from "rxjs/operators";
+import {map} from "rxjs/operators";
 import {MessageErrorType, NotificationService} from "./notification.service";
 import {HttpClient} from "@angular/common/http";
 
@@ -23,10 +23,6 @@ export class DockerContainerService implements OnDestroy {
         },
       });
     });
-
-    // this.getOverview().subscribe(() => {});
-    // this.getContainers().subscribe(() => {});
-    this.getImages().subscribe(() => {});
   }
 
   /*
