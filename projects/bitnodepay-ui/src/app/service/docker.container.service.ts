@@ -25,7 +25,7 @@ export class DockerContainerService implements OnDestroy {
   }
 
   private socketContainers() {
-    this.getContainerCPUInfoById('c52e343389f92e8de78ec0343577a4f1a2a6e9356bcc0ffd272208255aa5f3a8');
+    this.getContainerCPUInfoById('5c6eecc37462aea1efc9f372b9366232c8d5209ceabd24b626aa07d59c6d7d57');
   }
 
   sendMessage(msg: string) {
