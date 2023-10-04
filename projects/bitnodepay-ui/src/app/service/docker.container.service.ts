@@ -1,7 +1,9 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {Socket} from "ngx-socket-io";
+import {Socket, SocketIoConfig} from "ngx-socket-io";
 import {map} from "rxjs/operators";
 import {MessageErrorType, NotificationService} from "./notification.service";
+
+export const config: SocketIoConfig = {url: 'http://localhost:3000', options: {transports: ['websocket']}};
 
 @Injectable({
   providedIn: 'root'
