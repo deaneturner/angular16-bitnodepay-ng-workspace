@@ -1,0 +1,65 @@
+[
+  {
+    "Containers": -1,
+    "Created": 1696365402,
+    "Id": "sha256:97b9ef011601808d7622747c04874992a77e4131e23eb9f057be77b1739fd46e",
+    "Labels": {
+      "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>"
+    },
+    "ParentId": "",
+    "RepoDigests": [],
+    "RepoTags": [
+      "bitnodepay:v0.1.0"
+    ],
+    "SharedSize": -1,
+    "Size": 225962156,
+    "VirtualSize": 225962156
+  },
+  {
+    "Containers": -1,
+    "Created": 1696365134,
+    "Id": "sha256:54ddced6249c7613250fae898da165b36876226e8acc2d2766cadfbb2b015d04",
+    "Labels": null,
+    "ParentId": "",
+    "RepoDigests": [],
+    "RepoTags": [
+      "bitnodepay-service:latest"
+    ],
+    "SharedSize": -1,
+    "Size": 281097082,
+    "VirtualSize": 281097082
+  },
+  {
+    "Containers": -1,
+    "Created": 1695771285,
+    "Id": "sha256:4f7d0769014fa8f517b2ee8d1e1833258b5538144619e0e70b0fab3ef13d0a68",
+    "Labels": {
+      "org.opencontainers.image.ref.name": "ubuntu",
+      "org.opencontainers.image.version": "20.04"
+    },
+    "ParentId": "",
+    "RepoDigests": [],
+    "RepoTags": [
+      "lnbook/c-lightning:latest"
+    ],
+    "SharedSize": -1,
+    "Size": 229813129,
+    "VirtualSize": 229813129
+  },
+  {
+    "Containers": -1,
+    "Created": 1631451568,
+    "Id": "sha256:1a9ba7904f85ca5dc5e8cf360aee91a0cb02774a229a2512d5863dd237c0ccb9",
+    "Labels": null,
+    "ParentId": "",
+    "RepoDigests": [
+      "lnbook/bitcoind@sha256:e26dfe2fe016914c5a2903e57e4373b06117f7a7dd18b211d74ad1eb2a27f7d1"
+    ],
+    "RepoTags": [
+      "lnbook/bitcoind:latest"
+    ],
+    "SharedSize": -1,
+    "Size": 229425666,
+    "VirtualSize": 229425666
+  }
+]

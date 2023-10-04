@@ -1,6 +1,6 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {Socket, SocketIoConfig} from "ngx-socket-io";
-import {map} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 import {MessageErrorType, NotificationService} from "./notification.service";
 import {HttpClient} from "@angular/common/http";
 
@@ -23,64 +23,68 @@ export class DockerContainerService implements OnDestroy {
         },
       });
     });
+
+    // this.getOverview().subscribe(() => {});
+    // this.getContainers().subscribe(() => {});
+    this.getImages().subscribe(() => {});
   }
 
   /*
    * overview
    */
   getOverview() {
-    return this.http.get<any>('api/overview')
-      .toPromise()
-      .then(res => res.data as any[])
-      .then(data => data);
+      return this.http.get<any>('http://localhost:3000/api/overview')
+        .pipe(
+          map(data => data.json)
+        );
   }
 
 /**
  * containers list
  */
   getContainers() {
-    return this.http.get<any>('api/containers')
-      .toPromise()
-      .then(res => res.data as any[])
-      .then(data => data);
+    return this.http.get<any>('http://localhost:3000/api/containers')
+      .pipe(
+        map(data => data.json)
+      );
   }
 
   getContainersStart(id:string) {
-    return this.http.get<any>(`api/containers/start/${id}`)
-      .toPromise()
-      .then(res => res.data as any[])
-      .then(data => data);
+    return this.http.get<any>(`http://localhost:3000/api/containers/start/${id}`)
+      .pipe(
+        map(data => data.json)
+      );
   }
 
   getContainersStop(id:string) {
-    return this.http.get<any>(`api/containers/stop/${id}`)
-      .toPromise()
-      .then(res => res.data as any[])
-      .then(data => data);
+    return this.http.get<any>(`http://localhost:3000/api/containers/stop/${id}`)
+      .pipe(
+        map(data => data.json)
+      );
   }
 
   getContainersRemove(id:string) {
-    return this.http.get<any>(`api/containers/remove/${id}`)
-      .toPromise()
-      .then(res => res.data as any[])
-      .then(data => data);
+    return this.http.get<any>(`http://localhost:3000/api/containers/remove/${id}`)
+      .pipe(
+        map(data => data.json)
+      );
   }
 
   /*
    * images list
    */
-  getImages(id:string) {
-    return this.http.get<any>(`api/images`)
-      .toPromise()
-      .then(res => res.data as any[])
-      .then(data => data);
+  getImages() {
+    return this.http.get<any>(`http://localhost:3000/api/images`)
+      .pipe(
+        map(data => data.json)
+      );
   }
 
   getImagesRemove(id:string) {
-    return this.http.get<any>(`api/images/remove/${id}`)
-      .toPromise()
-      .then(res => res.data as any[])
-      .then(data => data);
+    return this.http.get<any>(`http://localhost:3000/api/images/remove/${id}`)
+      .pipe(
+        map(data => data.json)
+      );
   }
 
   /*
@@ -88,9 +92,9 @@ export class DockerContainerService implements OnDestroy {
    */
   getSearch(name:string) {
     return this.http.get<any>(`/search/${name}`)
-      .toPromise()
-      .then(res => res.data as any[])
-      .then(data => data);
+      .pipe(
+        map(data => data.json)
+      );
   }
 
   /*
