@@ -14,7 +14,7 @@ export class DockerContainerService implements OnDestroy {
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
   containers = {
-    defaultId: '1105c672d412eb78e6ae4622b213b8afbd337b2e341d56a5f98e0c06c691240d',
+    defaultId: '',
     connect: (watchtower: any)=> {
       watchtower.status.running$.pipe(takeUntil(this.destroy$)).subscribe((socketConnected: boolean) => {
         if (socketConnected) {
@@ -24,6 +24,12 @@ export class DockerContainerService implements OnDestroy {
           console.warn('Containers Service: connect: waiting to connect...');
         }
       });
+    },
+    get: () => {
+      return this.http.get<any>('http://localhost:3000/api/containers')
+        .pipe(
+          map(data => data)
+        );
     },
   };
 
@@ -45,7 +51,7 @@ export class DockerContainerService implements OnDestroy {
         socket.emit('getSysInfo', id);
         socket.once(id, (data: any) => {
           if (!this.watchtower.socketConnected) {
-            const msg = 'Containers Service: is up.';
+            const msg = 'Containers Service is available.';
             console.log(msg);
             notifications.messages = [];
             this.watchtower.socketConnected = true;
@@ -63,7 +69,7 @@ export class DockerContainerService implements OnDestroy {
         });
         // event - end
         socket.on('end', (status: any) => {
-          const msg = 'Container CPU Info Service: Gracefully Ended!';
+          const msg = 'Container Service: Gracefully Ended!';
           console.warn(msg);
           notifications.showMessage({
             severity: MessageErrorType.success,
@@ -112,9 +118,22 @@ export class DockerContainerService implements OnDestroy {
       }
     },
     init: () => {
-      this.watchtower.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
-      this.watchtower.events.watch.onDisconnect(this.socket, this.notificationService);
-      this.watchtower.status.init(this.watchtower.socketConnected);
+      this.containers.get().pipe(takeUntil(this.destroy$)).subscribe((res) => {
+        // TODO - harder error handling
+        setTimeout(() => {
+          this.notificationService.showMessage({
+            severity: MessageErrorType.success,
+            summary: 'Data Services are available.',
+            detail: ''
+          });
+        }, 3000);
+        // watchtower instance uses first container for status reporting
+        this.containers.defaultId = res[0].Id;
+        // pass watchtower instance for determination of status
+        this.watchtower.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
+        this.watchtower.events.watch.onDisconnect(this.socket, this.notificationService);
+        this.watchtower.status.init(this.watchtower.socketConnected);
+      });
       return this.watchtower;
     }
   }
