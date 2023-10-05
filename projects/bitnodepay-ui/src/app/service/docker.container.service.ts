@@ -21,6 +21,7 @@ export class DockerContainerService implements OnDestroy {
         summary: 'The Container Service has disconnected!',
         detail: 'Closing this message will trigger a reconnect. Note: you can also try refreshing the browser window.',
         callback: () => {
+          this.socketConnected = false;
           this.socketContainers();
         },
       });
