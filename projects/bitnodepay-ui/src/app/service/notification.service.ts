@@ -41,7 +41,6 @@ export class NotificationService {
   }
 
   messageValueChange(messageConfig: MessageActionable[]) {
-    debugger;
     const callback = messageConfig[0].callback();
   }
 

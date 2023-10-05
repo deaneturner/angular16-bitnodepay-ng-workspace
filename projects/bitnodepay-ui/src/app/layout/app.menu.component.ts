@@ -96,51 +96,6 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'Prime Blocks',
-                icon: 'pi pi-fw pi-prime',
-                items: [
-                    {
-                        label: 'Free Blocks',
-                        icon: 'pi pi-fw pi-eye',
-                        routerLink: ['/blocks']
-                    },
-                    {
-                        label: 'All Blocks',
-                        icon: 'pi pi-fw pi-globe',
-                        url: ['https://www.primefaces.org/primeblocks-ng'],
-                        target: '_blank'
-                    }
-                ]
-            },
-            {
-                label: 'Utilities',
-                icon: 'pi pi-fw pi-compass',
-                items: [
-                    {
-                        label: 'PrimeIcons',
-                        icon: 'pi pi-fw pi-prime',
-                        routerLink: ['utilities/icons']
-                    },
-                    {
-                        label: 'Colors',
-                        icon: 'pi pi-fw pi-palette',
-                        routerLink: ['utilities/colors']
-                    },
-                    {
-                        label: 'PrimeFlex',
-                        icon: 'pi pi-fw pi-desktop',
-                        url: ['https://www.primefaces.org/primeflex/'],
-                        target: '_blank'
-                    },
-                    {
-                        label: 'Figma',
-                        icon: 'pi pi-fw pi-pencil',
-                        url: ['https://www.figma.com/file/zQOW0XBXdCTqODzEOqwBtt/Preview-%7C-Apollo-2022?node-id=335%3A21768&t=urYI89V3PLNAZEJG-1/'],
-                        target: '_blank'
-                    }
-                ]
-            },
-            {
                 label: 'Pages',
                 icon: 'pi pi-fw pi-briefcase',
                 items: [

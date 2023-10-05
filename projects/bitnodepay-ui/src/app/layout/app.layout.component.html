@@ -1,5 +1,4 @@
-<p-toast key="notifications"></p-toast>
-
+<p-toast key="notifications" position="top-center"></p-toast>
 <div class="layout-container" [ngClass]="containerClass">
     <div class="layout-content-wrapper">
       <p-messages [value]="notificationService.messages" (valueChange)="notificationService.messageValueChange(notificationService.messages)"></p-messages>
