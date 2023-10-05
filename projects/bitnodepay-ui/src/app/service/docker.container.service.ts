@@ -19,7 +19,7 @@ export class DockerContainerService implements OnDestroy {
       this.notificationService.showMessage({
         severity: MessageErrorType.FATAL,
         summary: 'The Container Service has disconnected!',
-        detail: 'Closing this message will trigger a reconnect. Note: you can also try refreshing the browser window.',
+        detail: 'Closing this message will trigger a reconnect.',
         callback: () => {
           this.socketConnected = false;
           this.socketContainers();
