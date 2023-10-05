@@ -26,10 +26,11 @@
     &.p-toast-top-center {
       top: 20px;
       .p-toast-message {
-        background: white;
+        background: whitesmoke;
         opacity: 1;
       }
     }
+    opacity: 1 !important;
 }
 
 .ng-hidden {
