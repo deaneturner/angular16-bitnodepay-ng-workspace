@@ -182,13 +182,6 @@ export class DockerContainerService implements OnDestroy {
       );
   }
 
-  /*
-   * socket
-   */
-  private socketContainers() {
-    this.getContainersInfo(this.containers.defaultId);
-  }
-
   sendMessage(msg: string) {
     this.socket.emit('message', msg);
   }
