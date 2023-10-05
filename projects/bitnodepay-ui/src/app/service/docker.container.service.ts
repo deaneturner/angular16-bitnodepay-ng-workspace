@@ -123,7 +123,7 @@ export class DockerContainerService implements OnDestroy {
         setTimeout(() => {
           this.notificationService.showMessage({
             severity: MessageErrorType.success,
-            summary: 'Data Services are available.',
+            summary: 'Data Service is available.',
             detail: ''
           });
         }, 3000);
