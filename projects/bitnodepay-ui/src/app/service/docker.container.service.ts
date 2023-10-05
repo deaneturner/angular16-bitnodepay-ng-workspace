@@ -18,9 +18,10 @@ export class DockerContainerService implements OnDestroy {
     connect: (watchtower: any)=> {
       watchtower.status.running$.pipe(takeUntil(this.destroy$)).subscribe((socketConnected: boolean) => {
         if (socketConnected) {
+          console.log('Containers Service: containers are starting.');
           this.getContainersInfo(this.containers.defaultId);
         } else {
-          console.log('TODO: handle socket disconnect');
+          console.warn('Containers Service: connect: waiting to connect...');
         }
       });
     },
@@ -44,12 +45,14 @@ export class DockerContainerService implements OnDestroy {
         socket.emit('getSysInfo', id);
         socket.once(id, (data: any) => {
           if (!this.watchtower.socketConnected) {
+            const msg = 'Containers Service: is up.';
+            console.log(msg);
             notifications.messages = [];
             this.watchtower.socketConnected = true;
             this.watchtower.status.update(this.watchtower.socketConnected);
             notifications.showMessage({
               severity: MessageErrorType.success,
-              summary: 'Containers Service: Connected!',
+              summary: msg,
               detail: ''
             })
           }
@@ -60,9 +63,11 @@ export class DockerContainerService implements OnDestroy {
         });
         // event - end
         socket.on('end', (status: any) => {
+          const msg = 'Container CPU Info Service: Gracefully Ended!';
+          console.warn(msg);
           notifications.showMessage({
             severity: MessageErrorType.success,
-            summary: 'Container CPU Info Service: Gracefully Ended!',
+            summary: msg,
             detail: ''
           })
         });
@@ -71,9 +76,11 @@ export class DockerContainerService implements OnDestroy {
         this.watchtower.sysInfo.get(containerId, socket, notifications);
         setTimeout(() => {
           if (!this.watchtower.socketConnected) {
+            const msg = 'The Container Service has not connected!';
+            console.warn(msg);
             notifications.showMessage({
               severity: MessageErrorType.FATAL,
-              summary: 'The Container Service has not connected!',
+              summary: msg,
               detail: 'The service may be down or there may be no containers available to serve.',
               callback: () => {
                 this.watchtower.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
@@ -88,9 +95,11 @@ export class DockerContainerService implements OnDestroy {
         onDisconnect: (socket: Socket, notifications: NotificationService) => {
           // handle disconnect
           socket.on('disconnect', () => {
+            const msg = 'The Container Service has disconnected!';
+            console.warn(msg);
             notifications.showMessage({
               severity: MessageErrorType.FATAL,
-              summary: 'The Container Service has disconnected!',
+              summary: msg,
               detail: 'Closing this message will trigger a reconnect.',
               callback: () => {
                 this.watchtower.socketConnected = false;
