@@ -1,8 +1,9 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {Socket, SocketIoConfig} from "ngx-socket-io";
-import {map} from "rxjs/operators";
+import {distinctUntilChanged, map} from "rxjs/operators";
 import {MessageErrorType, NotificationService} from "./notification.service";
 import {HttpClient} from "@angular/common/http";
+import {BehaviorSubject, Observable} from "rxjs";
 
 export const config: SocketIoConfig = {url: 'http://localhost:3000', options: {transports: ['websocket']}};
 
@@ -11,21 +12,93 @@ export const config: SocketIoConfig = {url: 'http://localhost:3000', options: {t
 })
 export class DockerContainerService implements OnDestroy {
 
-  socketConnected = false;
+  containerId = '1105c672d412eb78e6ae4622b213b8afbd337b2e341d56a5f98e0c06c691240d';
+
+  container = {
+    defaultId: '1105c672d412eb78e6ae4622b213b8afbd337b2e341d56a5f98e0c06c691240d',
+  };
+
+  watchtower = {
+    status: {
+      subject: new BehaviorSubject<boolean>(false),
+      running$: new Observable<boolean>(),
+      update: (socketConnected: boolean) => {
+        this.watchtower.status.subject.next(socketConnected);
+      },
+      init: (socketConnected: boolean) => {
+        this.watchtower.status.subject = new BehaviorSubject<boolean>(socketConnected);
+        this.watchtower.status.running$ = this.watchtower.status.subject.asObservable().pipe(distinctUntilChanged());
+      }
+    },
+    socketConnected: false,
+    sysInfo: {
+      get: (id: string, socket: Socket, notifications: NotificationService) => {
+        socket.emit('getSysInfo', id);
+        socket.once(id, (data: any) => {
+          if (! this.watchtower.socketConnected) {
+            notifications.messages = [];
+            this.watchtower.socketConnected = true;
+            this.watchtower.status.update(this.watchtower.socketConnected);
+            notifications.showMessage({severity: MessageErrorType.success, summary: 'Containers Service: Connected!', detail: ''})
+          }
+        });
+        // data
+        this.socket.on(id, (data: any) => {
+          console.log(data);
+        });
+        // event - end
+        socket.on('end', (status: any) => {
+          notifications.showMessage({
+            severity: MessageErrorType.success,
+            summary: 'Container CPU Info Service: Gracefully Ended!',
+            detail: ''
+          })
+        });
+      },
+      watch: (containerId: string, socket: Socket, notifications: NotificationService) => {
+        this.watchtower.sysInfo.get(containerId, socket, notifications);
+        setTimeout(() => {
+          if(! this.watchtower.socketConnected) {
+            notifications.showMessage({
+              severity: MessageErrorType.FATAL,
+              summary: 'The Container Service has not connected!',
+              detail: 'The service may be down or there may be no containers available to serve.',
+              callback: () => {
+                this.watchtower.sysInfo.watch(this.container.defaultId, this.socket, this.notificationService);
+              },
+            });
+          }
+        }, 3000);
+      }
+    },
+    events: {
+      watch: {
+        onDisconnect: (socket: Socket, notifications: NotificationService)=> {
+          // handle disconnect
+          socket.on('disconnect', () => {
+            notifications.showMessage({
+              severity: MessageErrorType.FATAL,
+              summary: 'The Container Service has disconnected!',
+              detail: 'Closing this message will trigger a reconnect.',
+              callback: () => {
+                this.watchtower.socketConnected = false;
+                this.watchtower.status.update(this.watchtower.socketConnected);
+                this.watchtower.sysInfo.watch(this.container.defaultId, this.socket, this.notificationService);
+              },
+            });
+          });
+        }
+      }
+    },
+    init: () => {
+      this.watchtower.sysInfo.watch(this.container.defaultId, this.socket, this.notificationService);
+      this.watchtower.events.watch.onDisconnect(this.socket, this.notificationService);
+      this.watchtower.status.init(this.watchtower.socketConnected);
+;    }
+  }
 
   constructor(private socket: Socket, private notificationService: NotificationService, private http: HttpClient) {
-    this.socketContainers();
-    this.socket.on('disconnect', () => {
-      this.notificationService.showMessage({
-        severity: MessageErrorType.FATAL,
-        summary: 'The Container Service has disconnected!',
-        detail: 'Closing this message will trigger a reconnect.',
-        callback: () => {
-          this.socketConnected = false;
-          this.socketContainers();
-        },
-      });
-    });
+    this.watchtower.init();
   }
 
   /*
@@ -100,19 +173,19 @@ export class DockerContainerService implements OnDestroy {
    * socket
    */
   private socketContainers() {
-    this.getContainersInfo('1105c672d412eb78e6ae4622b213b8afbd337b2e341d56a5f98e0c06c691240d');
-    setTimeout(() => {
-      if(!this.socketConnected) {
-        this.notificationService.showMessage({
-          severity: MessageErrorType.FATAL,
-          summary: 'The Container Service has not connected!',
-          detail: 'The service may be down or there may be no containers available to serve.',
-          callback: () => {
-            this.socketContainers();
-          },
-        });
-      }
-    }, 3000);
+    this.getContainersInfo(this.container.defaultId);
+    // setTimeout(() => {
+    //   if(!this.socketConnected) {
+    //     this.notificationService.showMessage({
+    //       severity: MessageErrorType.FATAL,
+    //       summary: 'The Container Service has not connected!',
+    //       detail: 'The service may be down or there may be no containers available to serve.',
+    //       callback: () => {
+    //         this.socketContainers();
+    //       },
+    //     });
+    //   }
+    // }, 3000);
   }
 
   sendMessage(msg: string) {
@@ -143,13 +216,13 @@ export class DockerContainerService implements OnDestroy {
    */
   getContainersInfo(id: string) {
     this.socket.emit('getContainersInfo', id);
-    this.socket.once('containerInfo', (data: any) => {
-      if (!this.socketConnected) {
-        this.notificationService.messages = [];
-        this.socketConnected = true;
-        this.notificationService.showMessage({severity: MessageErrorType.success, summary: 'Containers Info Service: Connected!', detail: ''})
-      }
-    });
+    // this.socket.once('containerInfo', (data: any) => {
+    //   if (!this.socketConnected) {
+    //     this.notificationService.messages = [];
+    //     this.socketConnected = true;
+    //     this.notificationService.showMessage({severity: MessageErrorType.success, summary: 'Containers Info Service: Connected!', detail: ''})
+    //   }
+    // });
     this.socket.on('containerInfo', (data: any) => {
       console.log(data);
     });
