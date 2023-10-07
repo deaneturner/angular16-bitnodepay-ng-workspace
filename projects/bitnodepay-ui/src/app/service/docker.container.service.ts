@@ -138,7 +138,7 @@ export class DockerContainerService implements OnDestroy {
     }
   }
 
-  constructor(private socket: Socket, private notificationService: NotificationService, private http: HttpClient) {
+  constructor(public socket: Socket, private notificationService: NotificationService, private http: HttpClient) {
     this.containers.connect(this.watchtower.init());
   }
 

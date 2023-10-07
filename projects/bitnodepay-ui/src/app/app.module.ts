@@ -7,10 +7,14 @@ import {SocketIoConfig, SocketIoModule} from "ngx-socket-io";
 import {MessageModule} from "primeng/message";
 import {MessageService} from "primeng/api";
 import {config} from "./service/docker.container.service";
+import { TerminalComponent } from './components/xterm/terminal/terminal.component';
+import { LogsComponent } from './components/xterm/logs/logs.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TerminalComponent,
+    LogsComponent
   ],
   imports: [
     AppRoutingModule,
