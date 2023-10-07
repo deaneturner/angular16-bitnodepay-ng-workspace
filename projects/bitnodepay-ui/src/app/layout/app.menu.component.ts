@@ -16,12 +16,53 @@ export class AppMenuComponent implements OnInit {
                 icon: 'pi pi-home',
                 items: [
                     {
-                        label: 'E-Commerce',
+                        label: 'Node Network',
                         icon: 'pi pi-fw pi-home',
                         routerLink: ['/']
                     }
                 ]
             },
+          {
+            label: 'Node Network',
+            icon: 'pi pi-fw pi-wallet',
+            items: [
+              {
+                label: 'Product Overview',
+                icon: 'pi pi-fw pi-image',
+                routerLink: ['ecommerce/product-overview']
+              },
+              {
+                label: 'Product List',
+                icon: 'pi pi-fw pi-list',
+                routerLink: ['ecommerce/product-list']
+              },
+              {
+                label: 'New Product',
+                icon: 'pi pi-fw pi-plus',
+                routerLink: ['ecommerce/new-product']
+              },
+              {
+                label: 'Shopping Cart',
+                icon: 'pi pi-fw pi-shopping-cart',
+                routerLink: ['ecommerce/shopping-cart']
+              },
+              {
+                label: 'Checkout Form',
+                icon: 'pi pi-fw pi-check-square',
+                routerLink: ['ecommerce/checkout-form']
+              },
+              {
+                label: 'Order History',
+                icon: 'pi pi-fw pi-history',
+                routerLink: ['ecommerce/order-history']
+              },
+              {
+                label: 'Order Summary',
+                icon: 'pi pi-fw pi-file',
+                routerLink: ['ecommerce/order-summary']
+              }
+            ]
+          },
             {
                 label: 'Apps',
                 icon: 'pi pi-th-large',
@@ -194,47 +235,6 @@ export class AppMenuComponent implements OnInit {
                         label: 'Contact Us',
                         icon: 'pi pi-fw pi-phone',
                         routerLink: ['/pages/contact']
-                    }
-                ]
-            },
-            {
-                label: 'E-Commerce',
-                icon: 'pi pi-fw pi-wallet',
-                items: [
-                    {
-                        label: 'Product Overview',
-                        icon: 'pi pi-fw pi-image',
-                        routerLink: ['ecommerce/product-overview']
-                    },
-                    {
-                        label: 'Product List',
-                        icon: 'pi pi-fw pi-list',
-                        routerLink: ['ecommerce/product-list']
-                    },
-                    {
-                        label: 'New Product',
-                        icon: 'pi pi-fw pi-plus',
-                        routerLink: ['ecommerce/new-product']
-                    },
-                    {
-                        label: 'Shopping Cart',
-                        icon: 'pi pi-fw pi-shopping-cart',
-                        routerLink: ['ecommerce/shopping-cart']
-                    },
-                    {
-                        label: 'Checkout Form',
-                        icon: 'pi pi-fw pi-check-square',
-                        routerLink: ['ecommerce/checkout-form']
-                    },
-                    {
-                        label: 'Order History',
-                        icon: 'pi pi-fw pi-history',
-                        routerLink: ['ecommerce/order-history']
-                    },
-                    {
-                        label: 'Order Summary',
-                        icon: 'pi pi-fw pi-file',
-                        routerLink: ['ecommerce/order-summary']
                     }
                 ]
             },
