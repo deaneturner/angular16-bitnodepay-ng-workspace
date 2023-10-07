@@ -18,10 +18,10 @@ export class DockerContainerService implements OnDestroy {
     connect: (watchtower: any)=> {
       watchtower.status.running$.pipe(takeUntil(this.destroy$)).subscribe((socketConnected: boolean) => {
         if (socketConnected) {
-          console.log('Containers Service: containers are starting.');
+          console.log('Container Service: containers are starting.');
           this.getContainersInfo(this.containers.defaultId);
         } else {
-          console.warn('Containers Service: connect: waiting to connect...');
+          console.warn('Container Service: connect: waiting to connect...');
         }
       });
     },
@@ -51,7 +51,7 @@ export class DockerContainerService implements OnDestroy {
         socket.emit('getSysInfo', id);
         socket.once(id, (data: any) => {
           if (!this.watchtower.socketConnected) {
-            const msg = 'Containers Service is available.';
+            const msg = 'Container Service is available.';
             console.log(msg);
             notifications.messages = [];
             this.watchtower.socketConnected = true;
@@ -123,7 +123,7 @@ export class DockerContainerService implements OnDestroy {
         setTimeout(() => {
           this.notificationService.showMessage({
             severity: MessageErrorType.success,
-            summary: 'Data Services are available.',
+            summary: 'Data Service is available.',
             detail: ''
           });
         }, 3000);
@@ -138,7 +138,7 @@ export class DockerContainerService implements OnDestroy {
     }
   }
 
-  constructor(private socket: Socket, private notificationService: NotificationService, private http: HttpClient) {
+  constructor(public socket: Socket, private notificationService: NotificationService, private http: HttpClient) {
     this.containers.connect(this.watchtower.init());
   }
 

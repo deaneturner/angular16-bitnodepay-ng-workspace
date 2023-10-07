@@ -1,0 +1,13 @@
+div#terminal {
+  background-color: black;
+}
+
+.xterm-viewport, .xterm-screen {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.terminal.xterm {
+  padding: 8px;
+}
