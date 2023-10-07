@@ -15,8 +15,8 @@ export class DockerContainerService implements OnDestroy {
 
   containers = {
     defaultId: '',
-    connect: (watchtower: any)=> {
-      watchtower.status.running$.pipe(takeUntil(this.destroy$)).subscribe((socketConnected: boolean) => {
+    connect: (watchtower: any) => {
+      watchtower?.status.running$.pipe(takeUntil(this.destroy$)).subscribe((socketConnected: boolean) => {
         if (socketConnected) {
           console.log('Container Service: containers are starting.');
           this.getContainersInfo(this.containers.defaultId);
@@ -117,29 +117,46 @@ export class DockerContainerService implements OnDestroy {
         }
       }
     },
-    init: () => {
-      this.containers.get().pipe(takeUntil(this.destroy$)).subscribe((res) => {
-        // TODO - harder error handling
-        setTimeout(() => {
-          this.notificationService.showMessage({
-            severity: MessageErrorType.success,
-            summary: 'Data Service is available.',
-            detail: ''
-          });
-        }, 3000);
-        // watchtower instance uses first container for status reporting
-        this.containers.defaultId = res[0].Id;
-        // pass watchtower instance for determination of status
-        this.watchtower.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
-        this.watchtower.events.watch.onDisconnect(this.socket, this.notificationService);
-        this.watchtower.status.init(this.watchtower.socketConnected);
-      });
-      return this.watchtower;
+    init: (notifications: NotificationService) => {
+      this.containers.get()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(
+          (res: any) => {
+            setTimeout(() => {
+              this.notificationService.showMessage({
+                severity: MessageErrorType.success,
+                summary: 'Data Service is available.',
+                detail: ''
+              });
+            }, 3000);
+            // watchtower instance uses first container for status reporting
+            this.containers.defaultId = res[0].Id;
+            // pass watchtower instance for determination of status
+            this.watchtower.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
+            this.watchtower.events.watch.onDisconnect(this.socket, this.notificationService);
+            this.watchtower.status.init(this.watchtower.socketConnected);
+            return this.watchtower;
+          },
+          (error) => {
+            const msg = 'The Container Service has not connected!';
+            notifications.showMessage({
+              severity: MessageErrorType.FATAL,
+              summary: msg,
+              detail: 'Unfortunately, this error is fatal, backend, service error.',
+              callback: () => {
+                this.watchtower.socketConnected = false;
+                this.watchtower.status.update(this.watchtower.socketConnected);
+                this.watchtower.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
+              },
+            });
+            console.error(msg, 'Most likely due to an authentication error (login page being returned from service...).');
+            }
+        );
     }
   }
 
   constructor(public socket: Socket, private notificationService: NotificationService, private http: HttpClient) {
-    this.containers.connect(this.watchtower.init());
+    this.containers.connect(this.watchtower.init(notificationService));
   }
 
   /*
