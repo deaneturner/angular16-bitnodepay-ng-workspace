@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 
+export interface NetworkNode {title: string, description: string, type: string}
+
 @Component({
   templateUrl: './productlist.component.html'
 })
@@ -7,7 +9,7 @@ export class ProductListComponent {
 
   color1: string = 'Bluegray';
 
-  network = [
+  network: NetworkNode[] = [
     {
       title: 'Starting and stopping a node',
       description: 'Learn how to start and stop a node',
@@ -35,6 +37,7 @@ export class ProductListComponent {
     },
     {
       title: 'LND Node Configuration',
+      description: 'Learn how to configure your LND node',
       type: 'Bitcoin / Lightning Wallet',
     }
   ];
