@@ -5,7 +5,7 @@ import {Socket} from "ngx-socket-io";
 import {DOCUMENT} from "@angular/common";
 import {DockerContainerService} from "../../../service/docker.container.service";
 import {FitAddon} from "xterm-addon-fit";
-import {jsonPrettyPrint} from "../../../utils/helpers";
+import {jsonHelp, xtermHelp} from "../../../utils/helpers";
 
 @Component({
   selector: 'app-logs',
@@ -62,7 +62,9 @@ export class LogsComponent implements AfterViewInit {
     });
     this.socket.emit('getContainersInfo', this.containerId); //  test socket.on containerInfo
     this.socket.on('containerInfo', (obj: any) => {
-      self.terminal.write(jsonPrettyPrint(obj));
+      self.terminal.write(xtermHelp.lineBreak());
+      self.terminal.write(jsonHelp.prettyPrint(obj));
+      self.terminal.write(xtermHelp.lineBreak());
       console.log(JSON.stringify(obj));
     });
 
