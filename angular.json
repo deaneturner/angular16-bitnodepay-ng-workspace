@@ -30,7 +30,8 @@
               "projects/bitnodepay-ui/src/assets"
             ],
             "styles": [
-              "projects/bitnodepay-ui/src/styles.scss"
+              "projects/bitnodepay-ui/src/styles.scss",
+              "../node_modules/xterm/css/xterm.css"
             ],
             "scripts": []
           },
