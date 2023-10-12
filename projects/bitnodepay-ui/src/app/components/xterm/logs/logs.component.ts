@@ -22,6 +22,11 @@ export class LogsComponent implements AfterViewInit {
   constructor(@Inject(DOCUMENT) private document: Document, private dockerContainerService: DockerContainerService) {
     this.socket = this.dockerContainerService.socket;
     this.terminal = new Terminal({
+      theme: {
+        foreground: 'black',
+        background: 'white',
+      },
+      fontSize: 10,
       useStyle: true,
       convertEol: true,
       screenKeys: false,
