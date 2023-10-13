@@ -17,6 +17,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { AvatarModule } from 'primeng/avatar';
 import { TimelineModule } from 'primeng/timeline';
 import { BadgeModule } from 'primeng/badge';
+import {LogsComponent} from "../../xterm/logs/logs.component";
 
 @NgModule({
 	imports: [
@@ -38,6 +39,6 @@ import { BadgeModule } from 'primeng/badge';
 		TimelineModule,
 		BadgeModule
 	],
-	declarations: [EcommerceDashboardComponent]
+	declarations: [EcommerceDashboardComponent, LogsComponent]
 })
 export class EcommerceDashboardModule { }

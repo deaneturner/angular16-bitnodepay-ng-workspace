@@ -64,9 +64,9 @@ export class DockerContainerService implements OnDestroy {
           }
         });
         // data
-        this.socket.on(id, (data: any) => {
-          console.log(data);
-        });
+        // this.socket.on(id, (data: any) => {
+        //   console.log(data);
+        // });
         // event - end
         socket.on('end', (status: any) => {
           const msg = 'Container Service: Gracefully Ended!';
