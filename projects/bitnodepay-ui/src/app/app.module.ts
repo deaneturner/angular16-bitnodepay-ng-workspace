@@ -14,7 +14,6 @@ import { LogsComponent } from './components/xterm/logs/logs.component';
   declarations: [
     AppComponent,
     TerminalComponent,
-    LogsComponent
   ],
   imports: [
     AppRoutingModule,
