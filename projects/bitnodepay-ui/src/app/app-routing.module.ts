@@ -14,7 +14,7 @@ const routes: Routes = [
             { path: 'pages', data: { breadcrumb: 'Pages' }, loadChildren: () => import('./components/pages/pages.module').then(m => m.PagesModule) },
             { path: 'profile', data: { breadcrumb: 'User Management' }, loadChildren: () => import('./components/profile/profile.module').then(m => m.ProfileModule) },
             { path: 'documentation', data: { breadcrumb: 'Documentation' }, loadChildren: () => import('./components/documentation/documentation.module').then(m => m.DocumentationModule) },
-            { path: 'ecommerce', data: { breadcrumb: 'Node Network' }, loadChildren: () => import('./components/ecommerce/ecommerce.module').then(m => m.EcommerceModule) },
+            { path: 'container', data: { breadcrumb: 'Network' }, loadChildren: () => import('./components/container/container.module').then(m => m.ContainerModule) },
             { path: 'apps', data: { breadcrumb: 'Apps' }, loadChildren: () => import('./components/apps/apps.module').then(m => m.AppsModule) }
         ]
     },

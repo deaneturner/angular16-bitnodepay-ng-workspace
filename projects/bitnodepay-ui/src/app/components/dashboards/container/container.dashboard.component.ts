@@ -1,10 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-// import { Product } from 'src/app/demo/api/product';
-// import { AppConfig, LayoutService } from 'src/app/layout/service/app.layout.service';
-// import { ProductService } from 'src/app/demo/service/product.service';
 import {Table} from 'primeng/table';
-// import { Customer } from 'src/app/demo/api/customer';
 import {PrimeIcons} from 'primeng/api';
 import {ProductService} from "../../../service/product.service";
 import {LayoutService} from "../../../layout/service/app.layout.service";
@@ -12,12 +8,10 @@ import {CustomerService} from "../../../service/customer.service";
 import {Customer} from "../../../api/customer";
 import {DockerContainerService} from "../../../service/docker.container.service";
 
-// import { CustomerService } from 'src/app/demo/service/customer.service';
-
 @Component({
-  templateUrl: './ecommerce.dashboard.component.html'
+  templateUrl: './container.dashboard.component.html'
 })
-export class EcommerceDashboardComponent implements OnInit, OnDestroy {
+export class ContainerDashboardComponent implements OnInit, OnDestroy {
 
   visitorChart: any;
 
