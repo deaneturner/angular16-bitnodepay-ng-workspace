@@ -10,7 +10,7 @@ export const config: SocketIoConfig = {url: 'http://localhost:3000', options: {t
 @Injectable({
   providedIn: 'root'
 })
-export class DockerContainerService implements OnDestroy {
+export class ContainerService implements OnDestroy {
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
   containers = {
@@ -63,11 +63,6 @@ export class DockerContainerService implements OnDestroy {
             })
           }
         });
-        // data
-        // this.socket.on(id, (data: any) => {
-        //   console.log(data);
-        // });
-        // event - end
         socket.on('end', (status: any) => {
           const msg = 'Container Service: Gracefully Ended!';
           console.warn(msg);

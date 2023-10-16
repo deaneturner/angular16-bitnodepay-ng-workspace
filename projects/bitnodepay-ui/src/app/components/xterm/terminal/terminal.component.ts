@@ -7,7 +7,7 @@ import {FitAddon} from 'xterm-addon-fit';
 import {SerializeAddon} from "xterm-addon-serialize";
 import {Unicode11Addon} from 'xterm-addon-unicode11';
 import {WebLinksAddon} from 'xterm-addon-web-links';
-import {DockerContainerService} from "../../../service/docker.container.service";
+import {ContainerService} from "../../../service/container.service";
 import {Socket} from "ngx-socket-io";
 
 @Component({
@@ -21,7 +21,7 @@ export class TerminalComponent implements AfterViewInit {
   socket: Socket;
   terminal: Terminal;
 
-  constructor(@Inject(DOCUMENT) private document: Document, private dockerContainerService: DockerContainerService) {
+  constructor(@Inject(DOCUMENT) private document: Document, private dockerContainerService: ContainerService) {
     const self = this;
     this.socket = this.dockerContainerService.socket;
     this.terminal = new Terminal({

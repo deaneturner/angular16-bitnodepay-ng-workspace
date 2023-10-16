@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
-import {DockerContainerService} from "./service/docker.container.service";
+import {ContainerService} from "./service/container.service";
 
 @Component({
     selector: 'app-root',
@@ -9,7 +9,7 @@ import {DockerContainerService} from "./service/docker.container.service";
 export class AppComponent implements OnInit {
 
     constructor(private primengConfig: PrimeNGConfig,
-                private dockerContainerService: DockerContainerService) {
+                private dockerContainerService: ContainerService) {
     }
 
     ngOnInit(): void {
