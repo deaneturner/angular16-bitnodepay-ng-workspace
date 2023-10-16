@@ -17,7 +17,7 @@ export class ContainerCatalogComponent {
                     size: 'Small',
                     price: '$50',
                     deliveryDate: 'Delivered on 7 February 2023',
-                    image: 'assets//images/container/order-history/orderhistory-1.png'
+                    image: 'assets//images/container/catalog/orderhistory-1.png'
                 },
                 {
                     name: 'Product Name Placeholder A Little Bit Long One',
@@ -25,7 +25,7 @@ export class ContainerCatalogComponent {
                     size: 'Small',
                     price: '$50',
                     deliveryDate: 'Delivered on 7 February 2023',
-                    image: 'assets//images/container/order-history/orderhistory-2.png'
+                    image: 'assets//images/container/catalog/orderhistory-2.png'
                 },
                 {
                     name: 'Product Name Placeholder A Little Bit Long One',
@@ -33,7 +33,7 @@ export class ContainerCatalogComponent {
                     size: 'Small',
                     price: '$63',
                     deliveryDate: 'Delivered on 7 February 2023',
-                    image: 'assets//images/container/order-history/orderhistory-3.png'
+                    image: 'assets//images/container/catalog/orderhistory-3.png'
                 },
             ]
         },
@@ -48,7 +48,7 @@ export class ContainerCatalogComponent {
                     size: 'Small',
                     price: '$80',
                     deliveryDate: 'Delivered on 9 February 2023',
-                    image: 'assets//images/container/order-history/orderhistory-4.png'
+                    image: 'assets//images/container/catalog/orderhistory-4.png'
                 },
                 {
                     name: 'Product Name Placeholder A Little Bit Long One',
@@ -56,7 +56,7 @@ export class ContainerCatalogComponent {
                     size: 'Small',
                     price: '$20',
                     deliveryDate: 'Delivered on 9 February 2023',
-                    image: 'assets//images/container/order-history/orderhistory-5.png'
+                    image: 'assets//images/container/catalog/orderhistory-5.png'
                 },
                 {
                     name: 'Product Name Placeholder A Little Bit Long One',
@@ -64,7 +64,7 @@ export class ContainerCatalogComponent {
                     size: 'Small',
                     price: '$150',
                     deliveryDate: 'Delivered on 9 February 2023',
-                    image: 'assets//images/container/order-history/orderhistory-6.png'
+                    image: 'assets//images/container/catalog/orderhistory-6.png'
                 },
             ]
         }

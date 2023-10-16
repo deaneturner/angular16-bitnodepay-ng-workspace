@@ -29,7 +29,7 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Catalog',
                         icon: 'pi pi-fw pi-history',
-                        routerLink: ['container/order-history']
+                        routerLink: ['container/catalog']
                     },
                     {
                         label: 'Detail',
