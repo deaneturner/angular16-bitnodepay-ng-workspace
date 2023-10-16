@@ -28,28 +28,52 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="p-2 my-4 flex flex-column lg:flex-row justify-content-between align-items-center" *ngFor="let node of network.nodes; let i = index;">
+            <div class="p-2 my-4 flex flex-column lg:flex-row justify-content-between align-items-center"
+                 *ngFor="let node of network.nodes; let i = index;">
                 <div class="flex flex-column lg:flex-row justify-content-center align-items-center px-2">
                     <div class="flex flex-column my-auto text-center md:text-left">
                         <span class="text-900 font-medium mb-3 mt-3 lg:mt-0">{{node.name}}</span>
                         <span class="text-700 text-sm mb-3">{{node.image}}</span>
-                        <a pRipple tabindex="0" class="p-2 select-none cursor-pointer w-10rem mx-auto lg:mx-0 border-round font-medium text-center border-1 border-primary text-primary transition-duration-150">Stop <span class="font-light">| {{network.uptime}}</span></a>
+                        <span class="text-700 text-sm mb-3">CPU: {{node.cpu}}</span>
+                        <span class="text-700 text-sm mb-3">RAM: {{node.ram}}</span>
                     </div>
                 </div>
-                <div class=" mr-0 lg:mr-3 mt-4 lg:mt-0 p-2 flex align-items-center" style="background-color: rgba(76, 175, 80,.1);"  [style.border-radius]="'2.5rem'" *ngFor="let action of node.actions">
-                    <span class="bg-green-500 text-white flex align-items-center justify-content-center border-circle mr-2" style="min-width:2rem; min-height: 2rem">
-                        <i class="pi pi-check"></i>
-                    </span>
-                    <span class="text-green-500">{{action}}</span>
+                <div class="flex flex-column justify-content-center align-items-center px-2">
+                    <div class="flex flex-row justify-content-center align-items-center px-2">
+                        <div class=" mr-0 lg:mr-3 mt-4 lg:mt-0 p-2 flex align-items-center"
+                             style="background-color: rgba(76, 175, 80,.1);" [style.border-radius]="'2.5rem'"
+                             *ngFor="let action of node.actions">
+                                    <span class="bg-green-500 text-white flex align-items-center justify-content-center border-circle mr-2"
+                                          style="min-width:2rem; min-height: 2rem">
+                                        <i class="pi pi-check"></i>
+                                    </span>
+                            <span class="text-green-500">{{action}}</span>
+                        </div>
+                        <div class="flex flex-row justify-content-center align-items-center px-2">
+                            <a pRipple tabindex="0"
+                               class="mr-0 lg:mr-3 mt-4 lg:mt-0 p-2 flex align-items-center p-2 select-none cursor-pointer w-10rem mx-auto lg:mx-0 border-round font-medium text-center border-1 border-primary text-primary transition-duration-150">Stop
+                                <span class="font-light">| {{network.uptime}}</span></a>
+                        </div>
+                    </div>
+                    <p-divider *ngIf="i !== network.nodes.length-1"
+                               class="w-full block lg:hidden surface-border"></p-divider>
                 </div>
-                <p-divider *ngIf="i !== network.nodes.length-1" class="w-full block lg:hidden surface-border"></p-divider>
+            </div>
+            <div class="col-12 p-0 flex border-top-1 surface-border">
+                <a tabindex="0"
+                   class="cursor-pointer py-4 flex flex-column md:flex-row text-center justify-content-center align-items-center text-primary hover:bg-primary hover:text-0 transition-duration-150 w-full"
+                   style="border-bottom-left-radius: 6px;"><i class="pi pi-folder mr-2 mb-2 md:mb-1"></i>Archive
+                    Order</a>
+                <a tabindex="0"
+                   class="cursor-pointer py-4 flex flex-column md:flex-row text-center justify-content-center align-items-center text-primary hover:bg-primary hover:text-0 transition-duration-150 w-full"><i
+                        class="pi pi-refresh mr-2 mb-2 md:mb-1"></i>Return</a>
+                <a tabindex="0"
+                   class="cursor-pointer py-4 flex flex-column md:flex-row text-center justify-content-center align-items-center text-primary hover:bg-primary hover:text-0 transition-duration-150 w-full"><i
+                        class="pi pi-file mr-2 mb-2 md:mb-1"></i>View Invoice</a>
+                <a tabindex="0"
+                   class="cursor-pointer py-4 flex flex-column md:flex-row text-center justify-content-center align-items-center text-primary hover:bg-primary hover:text-0 transition-duration-150 w-full"
+                   style="border-bottom-right-radius: 6px;"><i class="pi pi-comment mr-2 mb-2 md:mb-1"></i>Write a
+                    Review</a>
             </div>
         </div>
-        <div class="col-12 p-0 flex border-top-1 surface-border">
-            <a tabindex="0" class="cursor-pointer py-4 flex flex-column md:flex-row text-center justify-content-center align-items-center text-primary hover:bg-primary hover:text-0 transition-duration-150 w-full" style="border-bottom-left-radius: 6px;"><i class="pi pi-folder mr-2 mb-2 md:mb-1"></i>Archive Order</a>
-            <a tabindex="0" class="cursor-pointer py-4 flex flex-column md:flex-row text-center justify-content-center align-items-center text-primary hover:bg-primary hover:text-0 transition-duration-150 w-full"><i class="pi pi-refresh mr-2 mb-2 md:mb-1"></i>Return</a>
-            <a tabindex="0" class="cursor-pointer py-4 flex flex-column md:flex-row text-center justify-content-center align-items-center text-primary hover:bg-primary hover:text-0 transition-duration-150 w-full"><i class="pi pi-file mr-2 mb-2 md:mb-1"></i>View Invoice</a>
-            <a tabindex="0" class="cursor-pointer py-4 flex flex-column md:flex-row text-center justify-content-center align-items-center text-primary hover:bg-primary hover:text-0 transition-duration-150 w-full" style="border-bottom-right-radius: 6px;"><i class="pi pi-comment mr-2 mb-2 md:mb-1"></i>Write a Review</a>
-        </div>
     </div>
-</div>
