@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { OrderSummaryComponent } from './ordersummary.component';
+import { ContainerListComponent } from './containerlist.component';
 
 @NgModule({
     imports: [RouterModule.forChild([
-        { path: '', component: OrderSummaryComponent }
+        { path: '', component: ContainerListComponent }
     ])],
     exports: [RouterModule]
 })
-export class OrderSummaryRoutingModule { }
+export class ContainerListRoutingModule { }

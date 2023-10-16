@@ -15,9 +15,9 @@ import {DockerContainerService} from "../../../service/docker.container.service"
 // import { CustomerService } from 'src/app/demo/service/customer.service';
 
 @Component({
-  templateUrl: './ecommerce.dashboard.component.html'
+  templateUrl: './container.dashboard.component.html'
 })
-export class EcommerceDashboardComponent implements OnInit, OnDestroy {
+export class ContainerDashboardComponent implements OnInit, OnDestroy {
 
   visitorChart: any;
 

@@ -27,39 +27,39 @@ export class AppMenuComponent implements OnInit {
             icon: 'pi pi-fw pi-wallet',
             items: [
               {
+                label: 'Order History',
+                icon: 'pi pi-fw pi-history',
+                routerLink: ['container/order-history']
+              },
+              {
                 label: 'Product Overview',
                 icon: 'pi pi-fw pi-image',
-                routerLink: ['ecommerce/product-overview']
+                routerLink: ['container/product-overview']
               },
               {
                 label: 'Product List',
                 icon: 'pi pi-fw pi-list',
-                routerLink: ['ecommerce/product-list']
+                routerLink: ['container/product-list']
               },
               {
                 label: 'New Product',
                 icon: 'pi pi-fw pi-plus',
-                routerLink: ['ecommerce/new-product']
+                routerLink: ['container/new-product']
               },
               {
                 label: 'Shopping Cart',
                 icon: 'pi pi-fw pi-shopping-cart',
-                routerLink: ['ecommerce/shopping-cart']
+                routerLink: ['container/shopping-cart']
               },
               {
                 label: 'Checkout Form',
                 icon: 'pi pi-fw pi-check-square',
-                routerLink: ['ecommerce/checkout-form']
-              },
-              {
-                label: 'Order History',
-                icon: 'pi pi-fw pi-history',
-                routerLink: ['ecommerce/order-history']
+                routerLink: ['container/checkout-form']
               },
               {
                 label: 'Order Summary',
                 icon: 'pi pi-fw pi-file',
-                routerLink: ['ecommerce/order-summary']
+                routerLink: ['container/container-list']
               }
             ]
           },

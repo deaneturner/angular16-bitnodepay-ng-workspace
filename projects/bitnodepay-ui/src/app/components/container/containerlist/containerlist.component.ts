@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: './ordersummary.component.html',
+    templateUrl: './containerlist.component.html',
 })
-export class OrderSummaryComponent {
+export class ContainerListComponent {
 
     products = [
         {
@@ -12,7 +12,7 @@ export class OrderSummaryComponent {
             color: 'White',
             price: '$12',
             quantity: '1',
-            image: 'assets/images/ecommerce/ordersummary/order-summary-1-1.png'
+            image: 'assets/images/container/containerlist/container-list-1-1.png'
         },
         {
             name: 'Regular Jeans',
@@ -20,7 +20,7 @@ export class OrderSummaryComponent {
             color: 'Black',
             price: '$24',
             quantity: '1',
-            image: 'assets/images/ecommerce/ordersummary/order-summary-1-2.png'
+            image: 'assets/images/container/containerlist/container-list-1-2.png'
         }
     ];
 }
