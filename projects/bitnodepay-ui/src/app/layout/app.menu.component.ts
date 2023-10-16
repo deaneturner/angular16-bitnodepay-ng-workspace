@@ -1,5 +1,5 @@
-import { OnInit } from '@angular/core';
-import { Component } from '@angular/core';
+import {OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'app-menu',
@@ -16,53 +16,53 @@ export class AppMenuComponent implements OnInit {
                 icon: 'pi pi-home',
                 items: [
                     {
-                        label: 'Node Network Sim',
+                        label: 'Network Dashboard',
                         icon: 'pi pi-fw pi-home',
                         routerLink: ['/']
                     }
                 ]
             },
-          {
-            label: 'Node Network Sim',
-            icon: 'pi pi-fw pi-wallet',
-            items: [
-              {
-                label: 'Order History',
-                icon: 'pi pi-fw pi-history',
-                routerLink: ['container/order-history']
-              },
-              {
-                label: 'Product Overview',
-                icon: 'pi pi-fw pi-image',
-                routerLink: ['container/product-overview']
-              },
-              {
-                label: 'Product List',
-                icon: 'pi pi-fw pi-list',
-                routerLink: ['container/product-list']
-              },
-              {
-                label: 'New Product',
-                icon: 'pi pi-fw pi-plus',
-                routerLink: ['container/new-product']
-              },
-              {
-                label: 'Shopping Cart',
-                icon: 'pi pi-fw pi-shopping-cart',
-                routerLink: ['container/shopping-cart']
-              },
-              {
-                label: 'Checkout Form',
-                icon: 'pi pi-fw pi-check-square',
-                routerLink: ['container/checkout-form']
-              },
-              {
-                label: 'Order Summary',
-                icon: 'pi pi-fw pi-file',
-                routerLink: ['container/container-list']
-              }
-            ]
-          },
+            {
+                label: 'Network',
+                icon: 'pi pi-fw pi-wallet',
+                items: [
+                    {
+                        label: 'Catalog',
+                        icon: 'pi pi-fw pi-history',
+                        routerLink: ['container/order-history']
+                    },
+                    {
+                        label: 'Detail',
+                        icon: 'pi pi-fw pi-file',
+                        routerLink: ['container/container-list']
+                    },
+                    {
+                        label: 'Product Overview',
+                        icon: 'pi pi-fw pi-image',
+                        routerLink: ['container/product-overview']
+                    },
+                    {
+                        label: 'Product List',
+                        icon: 'pi pi-fw pi-list',
+                        routerLink: ['container/product-list']
+                    },
+                    {
+                        label: 'New Product',
+                        icon: 'pi pi-fw pi-plus',
+                        routerLink: ['container/new-product']
+                    },
+                    {
+                        label: 'Shopping Cart',
+                        icon: 'pi pi-fw pi-shopping-cart',
+                        routerLink: ['container/shopping-cart']
+                    },
+                    {
+                        label: 'Checkout Form',
+                        icon: 'pi pi-fw pi-check-square',
+                        routerLink: ['container/checkout-form']
+                    },
+                ]
+            },
             {
                 label: 'Apps',
                 icon: 'pi pi-th-large',

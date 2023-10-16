@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: './orderhistory.component.html'
+    templateUrl: './container-catalog.component.html'
 })
-export class OrderHistoryComponent {
+export class ContainerCatalogComponent {
 
     orders = [
         {
