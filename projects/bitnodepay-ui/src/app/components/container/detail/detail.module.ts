@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContainerListRoutingModule } from './containerlist-routing.module';
-import { ContainerListComponent } from './containerlist.component';
+import { DetailRoutingModule } from './detail-routing.module';
+import { DetailComponent } from './detail.component';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
     imports: [
         CommonModule,
-        ContainerListRoutingModule,
+        DetailRoutingModule,
         ButtonModule,
         RippleModule
     ],
     declarations: [
-        ContainerListComponent
+        DetailComponent
     ]
 })
-export class ContainerListModule { }
+export class DetailModule { }
