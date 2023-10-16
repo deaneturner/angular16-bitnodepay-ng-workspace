@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContainerCatalogRoutingModule } from './container-catalog-routing.module';
-import { ContainerCatalogComponent } from './container-catalog.component';
+import { CatalogRoutingModule } from './catalog-routing.module';
+import { CatalogComponent } from './catalog.component';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { RippleModule } from 'primeng/ripple';
@@ -9,11 +9,11 @@ import { RippleModule } from 'primeng/ripple';
 @NgModule({
     imports: [
         CommonModule,
-        ContainerCatalogRoutingModule,
+        CatalogRoutingModule,
         ButtonModule,
         DividerModule,
         RippleModule
     ],
-    declarations: [ContainerCatalogComponent]
+    declarations: [CatalogComponent]
 })
-export class ContainerCatalogModule { }
+export class CatalogModule { }

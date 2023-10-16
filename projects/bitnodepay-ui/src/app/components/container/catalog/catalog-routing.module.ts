@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ContainerCatalogComponent } from './container-catalog.component';
+import { CatalogComponent } from './catalog.component';
 
 @NgModule({
     imports: [RouterModule.forChild([
-        { path: '', component: ContainerCatalogComponent }
+        { path: '', component: CatalogComponent }
     ])],
     exports: [RouterModule]
 })
-export class ContainerCatalogRoutingModule { }
+export class CatalogRoutingModule { }
