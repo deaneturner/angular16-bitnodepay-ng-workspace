@@ -16,14 +16,14 @@ export class AppMenuComponent implements OnInit {
                 icon: 'pi pi-home',
                 items: [
                     {
-                        label: 'Node Network',
+                        label: 'Node Network Sim',
                         icon: 'pi pi-fw pi-home',
                         routerLink: ['/']
                     }
                 ]
             },
           {
-            label: 'Node Network',
+            label: 'Node Network Sim',
             icon: 'pi pi-fw pi-wallet',
             items: [
               {
