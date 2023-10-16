@@ -26,10 +26,7 @@ export class ContainerService implements OnDestroy {
       });
     },
     get: () => {
-      return this.http.get<any>('http://localhost:3000/api/containers')
-        .pipe(
-          map(data => data)
-        );
+      return this.getContainers();
     },
   };
 
@@ -170,7 +167,7 @@ export class ContainerService implements OnDestroy {
   getContainers() {
     return this.http.get<any>('http://localhost:3000/api/containers')
       .pipe(
-        map(data => data.json)
+        map(data => data)
       );
   }
 
