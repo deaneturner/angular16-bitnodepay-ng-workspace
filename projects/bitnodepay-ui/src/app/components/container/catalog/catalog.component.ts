@@ -5,69 +5,63 @@ import { Component } from '@angular/core';
 })
 export class CatalogComponent {
 
-    orders = [
+    networks = [
         {
-            orderNumber: '45123',
-            orderDate: '7 February 2023',
-            amount: '$123.00',
-            products: [
+            name: 'Bitcoin Daemon',
+            lastUpdated: '7 February 2023',
+            uptime: '123 minutes',
+            nodes: [
                 {
-                    name: 'Product Name Placeholder A Little Bit Long One',
-                    color: 'White',
-                    size: 'Small',
-                    price: '$50',
-                    deliveryDate: 'Delivered on 7 February 2023',
-                    image: 'assets//images/container/catalog/catalog-1.png'
+                    name: 'bitcoind',
+                    image: 'lnbook/bitcond',
+                    command: '/usr/local/bin/bitcoind-entrypoint.sh /usr/local/bin/mine.sh',
+                    port: '[TCP] 12005',
+                    cpu: 'No data',
+                    ram: 'No data',
+                    actions: ['Start', 'Remove', 'Logs'],
                 },
                 {
-                    name: 'Product Name Placeholder A Little Bit Long One',
-                    color: 'White',
-                    size: 'Small',
-                    price: '$50',
-                    deliveryDate: 'Delivered on 7 February 2023',
-                    image: 'assets//images/container/catalog/catalog-2.png'
-                },
-                {
-                    name: 'Product Name Placeholder A Little Bit Long One',
-                    color: 'White',
-                    size: 'Small',
-                    price: '$63',
-                    deliveryDate: 'Delivered on 7 February 2023',
-                    image: 'assets//images/container/catalog/catalog-3.png'
+                    name: 'bitcoind',
+                    image: 'lnbook/bitcond',
+                    command: '/usr/local/bin/bitcoind-entrypoint.sh /usr/local/bin/mine.sh',
+                    port: '[TCP] 12005',
+                    cpu: 'No data',
+                    ram: 'No data',
+                    actions: ['Start', 'Remove', 'Logs'],
                 },
             ]
         },
-        {
-            orderNumber: '45126',
-            orderDate: '9 February 2023',
-            amount: '$250.00',
-            products: [
-                {
-                    name: 'Product Name Placeholder A Little Bit Long One',
-                    color: 'White',
-                    size: 'Small',
-                    price: '$80',
-                    deliveryDate: 'Delivered on 9 February 2023',
-                    image: 'assets//images/container/catalog/catalog-4.png'
-                },
-                {
-                    name: 'Product Name Placeholder A Little Bit Long One',
-                    color: 'White',
-                    size: 'Small',
-                    price: '$20',
-                    deliveryDate: 'Delivered on 9 February 2023',
-                    image: 'assets//images/container/catalog/catalog-5.png'
-                },
-                {
-                    name: 'Product Name Placeholder A Little Bit Long One',
-                    color: 'White',
-                    size: 'Small',
-                    price: '$150',
-                    deliveryDate: 'Delivered on 9 February 2023',
-                    image: 'assets//images/container/catalog/catalog-6.png'
-                },
-            ]
-        }
+        // {
+        //     orderNumber: '45126',
+        //     orderDate: '9 February 2023',
+        //     amount: '$250.00',
+        //     products: [
+        //         {
+        //             name: 'Product Name Placeholder A Little Bit Long One',
+        //             color: 'White',
+        //             size: 'Small',
+        //             price: '$80',
+        //             deliveryDate: 'Delivered on 9 February 2023',
+        //             image: 'assets//images/container/catalog/catalog-4.png'
+        //         },
+        //         {
+        //             name: 'Product Name Placeholder A Little Bit Long One',
+        //             color: 'White',
+        //             size: 'Small',
+        //             price: '$20',
+        //             deliveryDate: 'Delivered on 9 February 2023',
+        //             image: 'assets//images/container/catalog/catalog-5.png'
+        //         },
+        //         {
+        //             name: 'Product Name Placeholder A Little Bit Long One',
+        //             color: 'White',
+        //             size: 'Small',
+        //             price: '$150',
+        //             deliveryDate: 'Delivered on 9 February 2023',
+        //             image: 'assets//images/container/catalog/catalog-6.png'
+        //         },
+        //     ]
+        // }
     ];
 
 }
