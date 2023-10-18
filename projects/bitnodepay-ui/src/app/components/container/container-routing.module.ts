@@ -8,10 +8,10 @@ import { RouterModule } from '@angular/router';
         { path: 'checkout-form', data: { breadcrumb: 'Checkout Form' }, loadChildren: () => import('./checkoutform/checkoutform.module').then(m => m.CheckoutFormModule) },
         { path: 'product-list', data: { breadcrumb: 'Product List' }, loadChildren: () => import('./productlist/productlist.module').then(m => m.ProductListModule) },
         { path: 'new-product', data: { breadcrumb: 'New Product' }, loadChildren: () => import('./newproduct/newproduct.module').then(m => m.NewProductModule) },
-        { path: 'order-history', data: { breadcrumb: 'Order History' }, loadChildren: () => import('./orderhistory/orderhistory.module').then(m => m.OrderHistoryModule) },
-        { path: 'order-summary', data: { breadcrumb: 'Order Summary' }, loadChildren: () => import('./ordersummary/ordersummary.module').then(m => m.OrderSummaryModule) },
+        { path: 'catalog', data: { breadcrumb: 'Catalog' }, loadChildren: () => import('./catalog/catalog.module').then(m => m.CatalogModule) },
+        { path: 'detail', data: { breadcrumb: 'Network Details' }, loadChildren: () => import('./detail/detail.module').then(m => m.DetailModule) },
         { path: '**', redirectTo: '/notfound' }
     ])],
     exports: [RouterModule]
 })
-export class EcommerceRoutingModule { }
+export class ContainerRoutingModule { }

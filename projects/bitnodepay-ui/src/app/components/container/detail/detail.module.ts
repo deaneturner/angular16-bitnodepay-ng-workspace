@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrderSummaryRoutingModule } from './ordersummary-routing.module';
-import { OrderSummaryComponent } from './ordersummary.component';
+import { DetailRoutingModule } from './detail-routing.module';
+import { DetailComponent } from './detail.component';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
     imports: [
         CommonModule,
-        OrderSummaryRoutingModule,
+        DetailRoutingModule,
         ButtonModule,
         RippleModule
     ],
     declarations: [
-        OrderSummaryComponent
+        DetailComponent
     ]
 })
-export class OrderSummaryModule { }
+export class DetailModule { }

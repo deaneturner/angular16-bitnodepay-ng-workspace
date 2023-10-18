@@ -33,7 +33,7 @@ export class LayoutService {
     // remember to change index.html
     // e.g. <link id="theme-link" rel="stylesheet" type="text/css" href="assets/layout/styles/theme/theme-light/orange/theme.css">
     config: AppConfig = {
-        ripple: false,
+        ripple: true,
         menuMode: 'static',
         colorScheme: 'light',
         theme: 'orange',

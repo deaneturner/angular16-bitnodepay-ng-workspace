@@ -6,7 +6,7 @@ import {AppLayoutModule} from './layout/app.layout.module';
 import {SocketIoModule} from "ngx-socket-io";
 import {MessageModule} from "primeng/message";
 import {MessageService} from "primeng/api";
-import {config} from "./service/docker.container.service";
+import {config} from "./service/container.service";
 import { TerminalComponent } from './components/xterm/terminal/terminal.component';
 import { LogsComponent } from './components/xterm/logs/logs.component';
 

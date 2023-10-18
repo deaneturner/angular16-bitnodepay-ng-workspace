@@ -57,7 +57,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/bitnodepay-ui/src/environments/environment.ts",
+                  "with": "projects/bitnodepay-ui/src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -69,7 +75,8 @@
               "browserTarget": "bitnodepay-ui:build:production"
             },
             "development": {
-              "browserTarget": "bitnodepay-ui:build:development"
+              "browserTarget": "bitnodepay-ui:build:development",
+              "proxyConfig": "projects/bitnodepay-ui/src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

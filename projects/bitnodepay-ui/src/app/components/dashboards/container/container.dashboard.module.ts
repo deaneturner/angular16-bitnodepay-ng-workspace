@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EcommerceDashboardComponent } from './ecommerce.dashboard.component';
-import { EcommerceDashboardRoutigModule } from './ecommerce.dashboard-routing.module';
+import { ContainerDashboardComponent } from './container.dashboard.component';
+import { ContainerDashboardRoutigModule } from './container.dashboard-routing.module';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +22,7 @@ import {LogsComponent} from "../../xterm/logs/logs.component";
 @NgModule({
 	imports: [
 		CommonModule,
-		EcommerceDashboardRoutigModule,
+		ContainerDashboardRoutigModule,
 		ButtonModule,
 		RippleModule,
 		DropdownModule,
@@ -39,6 +39,6 @@ import {LogsComponent} from "../../xterm/logs/logs.component";
 		TimelineModule,
 		BadgeModule
 	],
-	declarations: [EcommerceDashboardComponent, LogsComponent]
+	declarations: [ContainerDashboardComponent, LogsComponent]
 })
-export class EcommerceDashboardModule { }
+export class ContainerDashboardModule { }
