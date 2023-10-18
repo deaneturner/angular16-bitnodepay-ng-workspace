@@ -6,7 +6,7 @@ import {ProductService} from "../../../service/product.service";
 import {LayoutService} from "../../../layout/service/app.layout.service";
 import {CustomerService} from "../../../service/customer.service";
 import {Customer} from "../../../api/customer";
-import {DockerContainerService} from "../../../service/docker.container.service";
+import {ContainerService} from "../../../service/container.service";
 
 @Component({
   templateUrl: './container.dashboard.component.html'
@@ -87,7 +87,7 @@ export class ContainerDashboardComponent implements OnInit, OnDestroy {
 
   customerCarousel: any[] = [];
 
-  constructor(public dockerContainerService: DockerContainerService, private productService: ProductService, private layoutService: LayoutService,
+  constructor(public dockerContainerService: ContainerService, private productService: ProductService, private layoutService: LayoutService,
               private customerService: CustomerService) {
     this.subscription = this.layoutService.configUpdate$.subscribe(config => {
       this.initCharts();

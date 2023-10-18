@@ -3,7 +3,7 @@ import {AfterViewInit, Component, ElementRef, Inject, Input, ViewChild} from '@a
 import {Terminal} from "xterm";
 import {Socket} from "ngx-socket-io";
 import {DOCUMENT} from "@angular/common";
-import {DockerContainerService} from "../../../service/docker.container.service";
+import {ContainerService} from "../../../service/container.service";
 import {FitAddon} from "xterm-addon-fit";
 import {jsonHelp, xtermHelp} from "../../../utils/helpers";
 
@@ -20,7 +20,7 @@ export class LogsComponent implements AfterViewInit {
   socket: Socket;
   terminal: Terminal;
 
-  constructor(@Inject(DOCUMENT) private document: Document, private dockerContainerService: DockerContainerService) {
+  constructor(@Inject(DOCUMENT) private document: Document, private dockerContainerService: ContainerService) {
     this.socket = this.dockerContainerService.socket;
     this.terminal = new Terminal({
       theme: {
