@@ -37,7 +37,12 @@ export class CatalogComponent implements OnInit {
                     name: 'Bitcoin Daemon',
                     lastUpdated: '7 February 2023',
                     uptime: '123 minutes',
-                    nodes: containers
+                    nodes: [containers[0]],
+                }, {
+                    name: 'BitNodePay',
+                    lastUpdated: 'n/a',
+                    uptime: '0 minutes',
+                    nodes: [containers[1]],
                 }]);
             })
         );
