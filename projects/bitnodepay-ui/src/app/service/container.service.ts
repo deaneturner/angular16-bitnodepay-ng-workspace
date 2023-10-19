@@ -4,6 +4,7 @@ import {distinctUntilChanged, map, takeUntil} from "rxjs/operators";
 import {MessageErrorType, NotificationService} from "./notification.service";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
+import {environment} from "../../environments/environment";
 
 export const config: SocketIoConfig = {url: 'http://localhost:3000', options: {transports: ['websocket']}};
 
@@ -15,8 +16,8 @@ export class ContainerService implements OnDestroy {
 
   containers = {
     defaultId: '',
-    connect: (watchtower: any) => {
-      watchtower?.status.running$.pipe(takeUntil(this.destroy$)).subscribe((socketConnected: boolean) => {
+    connect: (monitor: any) => {
+      monitor?.status.running$.pipe(takeUntil(this.destroy$)).subscribe((socketConnected: boolean) => {
         if (socketConnected) {
           console.log('Container Service: containers are starting.');
           this.getContainersInfo(this.containers.defaultId);
@@ -30,16 +31,16 @@ export class ContainerService implements OnDestroy {
     },
   };
 
-  watchtower = {
+  monitor = {
     status: {
       subject: new BehaviorSubject<boolean>(false),
       running$: new Observable<boolean>(),
       update: (socketConnected: boolean) => {
-        this.watchtower.status.subject.next(socketConnected);
+        this.monitor.status.subject.next(socketConnected);
       },
       init: (socketConnected: boolean) => {
-        this.watchtower.status.subject = new BehaviorSubject<boolean>(socketConnected);
-        this.watchtower.status.running$ = this.watchtower.status.subject.asObservable().pipe(distinctUntilChanged());
+        this.monitor.status.subject = new BehaviorSubject<boolean>(socketConnected);
+        this.monitor.status.running$ = this.monitor.status.subject.asObservable().pipe(distinctUntilChanged());
       }
     },
     socketConnected: false,
@@ -47,12 +48,12 @@ export class ContainerService implements OnDestroy {
       get: (id: string, socket: Socket, notifications: NotificationService) => {
         socket.emit('getSysInfo', id);
         socket.once(id, (data: any) => {
-          if (!this.watchtower.socketConnected) {
+          if (!this.monitor.socketConnected) {
             const msg = 'Container Service is available.';
             console.log(msg);
             notifications.messages = [];
-            this.watchtower.socketConnected = true;
-            this.watchtower.status.update(this.watchtower.socketConnected);
+            this.monitor.socketConnected = true;
+            this.monitor.status.update(this.monitor.socketConnected);
             notifications.showMessage({
               severity: MessageErrorType.success,
               summary: msg,
@@ -71,9 +72,9 @@ export class ContainerService implements OnDestroy {
         });
       },
       watch: (containerId: string, socket: Socket, notifications: NotificationService) => {
-        this.watchtower.sysInfo.get(containerId, socket, notifications);
+        this.monitor.sysInfo.get(containerId, socket, notifications);
         setTimeout(() => {
-          if (!this.watchtower.socketConnected) {
+          if (!this.monitor.socketConnected) {
             const msg = 'The Container Service has not connected!';
             console.warn(msg);
             notifications.showMessage({
@@ -81,7 +82,7 @@ export class ContainerService implements OnDestroy {
               summary: msg,
               detail: 'The service may be down or there may be no containers available to serve.',
               callback: () => {
-                this.watchtower.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
+                this.monitor.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
               },
             });
           }
@@ -100,9 +101,9 @@ export class ContainerService implements OnDestroy {
               summary: msg,
               detail: 'Closing this message will trigger a reconnect.',
               callback: () => {
-                this.watchtower.socketConnected = false;
-                this.watchtower.status.update(this.watchtower.socketConnected);
-                this.watchtower.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
+                this.monitor.socketConnected = false;
+                this.monitor.status.update(this.monitor.socketConnected);
+                this.monitor.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
               },
             });
           });
@@ -121,13 +122,13 @@ export class ContainerService implements OnDestroy {
                 detail: ''
               });
             }, 3000);
-            // watchtower instance uses first container for status reporting
+            // monitor instance uses first container for status reporting
             this.containers.defaultId = res[0].Id;
-            // pass watchtower instance for determination of status
-            this.watchtower.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
-            this.watchtower.events.watch.onDisconnect(this.socket, this.notificationService);
-            this.watchtower.status.init(this.watchtower.socketConnected);
-            return this.watchtower;
+            // pass monitor instance for determination of status
+            this.monitor.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
+            this.monitor.events.watch.onDisconnect(this.socket, this.notificationService);
+            this.monitor.status.init(this.monitor.socketConnected);
+            return this.monitor;
           },
           (error) => {
             const msg = 'The Container Service has not connected!';
@@ -136,9 +137,9 @@ export class ContainerService implements OnDestroy {
               summary: msg,
               detail: 'Unfortunately, this error is fatal, backend, service error.',
               callback: () => {
-                this.watchtower.socketConnected = false;
-                this.watchtower.status.update(this.watchtower.socketConnected);
-                this.watchtower.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
+                this.monitor.socketConnected = false;
+                this.monitor.status.update(this.monitor.socketConnected);
+                this.monitor.sysInfo.watch(this.containers.defaultId, this.socket, this.notificationService);
               },
             });
             console.error(msg, 'Most likely due to an authentication error (login page being returned from service...).');
@@ -148,7 +149,7 @@ export class ContainerService implements OnDestroy {
   }
 
   constructor(public socket: Socket, private notificationService: NotificationService, private http: HttpClient) {
-    this.containers.connect(this.watchtower.init(notificationService));
+    this.containers.connect(this.monitor.init(notificationService));
   }
 
   /*
