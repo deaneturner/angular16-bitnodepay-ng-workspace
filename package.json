@@ -5,7 +5,8 @@
     "ng": "ng",
     "start:atlantis-demo": "ng serve atlantis-demo --port 4200",
     "start:bitnodepay-ui": "ng serve bitnodepay-ui --port 8080",
-    "build": "ng build",
+    "start:prod:bitnodepay-ui": "ng build bitnodepay-ui --configuration production && http-server dist/bitnodepay-ui -p 8080",
+    "build": "ng build bitnodepay-ui --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
