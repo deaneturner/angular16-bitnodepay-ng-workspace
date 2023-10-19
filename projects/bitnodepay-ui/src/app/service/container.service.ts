@@ -4,7 +4,6 @@ import {distinctUntilChanged, map, takeUntil} from "rxjs/operators";
 import {MessageErrorType, NotificationService} from "./notification.service";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {environment} from "../../environments/environment";
 
 export const config: SocketIoConfig = {url: 'http://localhost:3000', options: {transports: ['websocket']}};
 
