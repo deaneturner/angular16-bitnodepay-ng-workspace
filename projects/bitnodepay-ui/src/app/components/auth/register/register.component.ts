@@ -25,10 +25,10 @@ export class RegisterComponent {
 	constructor(private fb: FormBuilder, private authService: AuthService,
               private router:Router, public layoutService: LayoutService) {
     this.form = this.fb.group({
-      name:'test',
-      email: ['test@gmail.com',Validators.required],
-      password: ['Password10',Validators.required],
-      confirm: ['Password10',Validators.required]
+      name:['',Validators.required],
+      email: ['',Validators.required],
+      password: ['',Validators.required],
+      confirm: ['',Validators.required]
     });
   }
 
