@@ -41,7 +41,7 @@
             </ng-container>
             <span class="p-input-icon-left">
                           <i class="pi pi-envelope"></i>
-                          <input name="email" formControlName="email" type="mail" autocomplete="off" pInputText
+                          <input name="email" formControlName="email" type="mail" email autocomplete="off" pInputText
                                  placeholder="E-mail" class="form-control block mb-3" style="   max-width: 320px;
                           min-width: 270px;">
                       </span>
@@ -50,6 +50,9 @@
               <div class="mb-3">
                 <small class="p-error" *ngIf="form.controls['email'].errors?.['required']">
                  E-mail is required
+                </small>
+                <small class="p-error" *ngIf="form.controls['email'].errors?.['email']">
+                  E-mail format is invalid
                 </small>
               </div>
             </ng-container>
@@ -70,14 +73,19 @@
             <span class="p-input-icon-left">
                           <i class="pi pi-key"></i>
                           <input name="confirm" formControlName="confirm" type="password" autocomplete="off" pInputText
-                                 placeholder="Confirm" class="form-control block mb-3" style="   max-width: 320px;
+                                 placeholder="Confirm Password" class="form-control block mb-3" style="   max-width: 320px;
                           min-width: 270px;">
                       </span>
-            <ng-container *ngIf="form.controls['confirm'].invalid && (form.controls['confirm'].dirty || form.controls['confirm'].touched)"
+            <ng-container *ngIf="(form.invalid || form.controls['confirm'].invalid )&& (form.controls['confirm'].dirty || form.controls['confirm'].touched)"
                           class="alert alert-danger">
               <div class="mb-3">
                 <small class="p-error" *ngIf="form.controls['confirm'].errors?.['required']">
                   Confirm password is required
+                </small>
+              </div>
+              <div class="mb-3">
+                <small class="p-error" *ngIf="form.errors?.['confirmPassword']">
+                  Confirm password must match password
                 </small>
               </div>
             </ng-container>

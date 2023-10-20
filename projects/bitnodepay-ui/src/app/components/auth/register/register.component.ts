@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {LayoutService} from "../../../layout/service/app.layout.service";
 import {AuthService} from "../../../service/auth.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {confirmPasswordValidator} from "../newpassword/newpassword.component";
 
 @Component({
-	templateUrl: './register.component.html'
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent {
 
-  form:FormGroup;
+  form: FormGroup;
 
-  errors:string[] = [];
+  errors: string[] = [];
 
   messagePerErrorCode = {
     min: 'The minimum length is 10 characters',
@@ -20,21 +21,23 @@ export class RegisterComponent {
     "err_user": 'Could not create user'
   };
 
-	confirmed: boolean = false;
+  confirmed: boolean = false;
 
-	constructor(private fb: FormBuilder, private authService: AuthService,
-              private router:Router, public layoutService: LayoutService) {
+  constructor(private fb: FormBuilder, private authService: AuthService,
+              private router: Router, public layoutService: LayoutService) {
     this.form = this.fb.group({
-      username:['',Validators.required],
-      email: ['',Validators.required],
-      password: ['',Validators.required],
-      confirm: ['',Validators.required]
+        username: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+        confirm: ['', Validators.required],
+      }, {
+      validators: confirmPasswordValidator
     });
   }
 
-	get dark(): boolean {
-		return this.layoutService.config.colorScheme !== 'light';
-	}
+  get dark(): boolean {
+    return this.layoutService.config.colorScheme !== 'light';
+  }
 
   register() {
     debugger;
@@ -52,4 +55,6 @@ export class RegisterComponent {
 
     }
   }
+
+  protected readonly JSON = JSON;
 }
