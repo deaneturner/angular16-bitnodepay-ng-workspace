@@ -8,7 +8,7 @@ import {MessageModule} from "primeng/message";
 import {MessageService} from "primeng/api";
 import {config} from "./service/container.service";
 import { TerminalComponent } from './components/xterm/terminal/terminal.component';
-import { LogsComponent } from './components/xterm/logs/logs.component';
+import {AuthService} from "./service/auth.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { LogsComponent } from './components/xterm/logs/logs.component';
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     MessageService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, AuthService,]
 })
 export class AppModule {
 }

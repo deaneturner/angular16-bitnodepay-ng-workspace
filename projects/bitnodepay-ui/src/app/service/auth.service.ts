@@ -12,8 +12,9 @@ export const ANONYMOUS_USER: User = {
   roles: [],
 };
 
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 
   private subject = new BehaviorSubject<User>(ANONYMOUS_USER);
