@@ -11,6 +11,7 @@ export class ChatService {
 
     _activeUser: User = {
         "id": 1,
+        "email": "ioni.bowcher@nowhere.com",
         "name": "Ioni Bowcher",
         "image": "ionibowcher.png",
         "status": "active",
