@@ -14,6 +14,10 @@ export class RegisterComponent {
 
   errors: string[] = [];
 
+  dialog = {
+    display: false,
+  }
+
   messagePerErrorCode = {
     min: 'The minimum length is 10 characters',
     uppercase: 'At least one upper case character',

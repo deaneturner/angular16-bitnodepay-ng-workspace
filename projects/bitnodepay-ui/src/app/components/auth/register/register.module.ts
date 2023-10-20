@@ -10,20 +10,24 @@ import { CheckboxModule } from 'primeng/checkbox';
 // import { AppConfigModule } from 'src/app/layout/config/app.config.module';
 import { PasswordModule } from 'primeng/password';
 import {AppConfigModule} from "../../../layout/config/app.config.module";
+import {TooltipModule} from "primeng/tooltip";
+import {DialogModule} from "primeng/dialog";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RegisterRoutingModule,
-        FormsModule,
-        ButtonModule,
-        RippleModule,
-        InputTextModule,
-        CheckboxModule,
-        AppConfigModule,
-        PasswordModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    CommonModule,
+    RegisterRoutingModule,
+    FormsModule,
+    ButtonModule,
+    RippleModule,
+    InputTextModule,
+    CheckboxModule,
+    AppConfigModule,
+    PasswordModule,
+    ReactiveFormsModule,
+    TooltipModule,
+    DialogModule
+  ],
     declarations: [RegisterComponent]
 })
 export class RegisterModule { }

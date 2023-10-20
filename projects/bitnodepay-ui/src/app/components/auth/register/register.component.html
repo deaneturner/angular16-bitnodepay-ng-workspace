@@ -27,15 +27,16 @@
             <span class="p-input-icon-left">
                           <i class="pi pi-user"></i>
                           <input name="name" formControlName="username" type="text" autocomplete="off" pInputText
-                                 placeholder="User Name" class="form-control block mb-3" style="max-width: 320px;
+                                 placeholder="Username" class="form-control block mb-3" style="max-width: 320px;
                           min-width: 270px;">
                       </span>
-            <ng-container *ngIf="form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)"
-                 class="alert alert-danger">
+            <ng-container
+              *ngIf="form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)"
+              class="alert alert-danger">
               <div class="mb-3">
                 <small class="p-error" *ngIf="form.controls['username'].errors?.['required']">
-                User Name is required
-              </small>
+                  Username is required
+                </small>
               </div>
             </ng-container>
             <span class="p-input-icon-left">
@@ -44,11 +45,12 @@
                                  placeholder="E-mail" class="form-control block mb-3" style="   max-width: 320px;
                           min-width: 270px;">
                       </span>
-            <ng-container *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
-                          class="alert alert-danger">
+            <ng-container
+              *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
+              class="alert alert-danger">
               <div class="mb-3">
                 <small class="p-error" *ngIf="form.controls['email'].errors?.['required']">
-                 E-mail is required
+                  E-mail is required
                 </small>
                 <small class="p-error" *ngIf="form.controls['email'].errors?.['email']">
                   E-mail format is invalid
@@ -61,8 +63,9 @@
                                  pInputText placeholder="Password" class="form-control block mb-3" style="   max-width: 320px;
                           min-width: 270px;">
                       </span>
-            <ng-container *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"
-                          class="alert alert-danger">
+            <ng-container
+              *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"
+              class="alert alert-danger">
               <div class="mb-3">
                 <small class="p-error" *ngIf="form.controls['password'].errors?.['required']">
                   Password is required
@@ -75,8 +78,9 @@
                                  placeholder="Confirm Password" class="form-control block mb-3" style="   max-width: 320px;
                           min-width: 270px;">
                       </span>
-            <ng-container *ngIf="(form.invalid || form.controls['confirm'].invalid )&& (form.controls['confirm'].dirty || form.controls['confirm'].touched)"
-                          class="alert alert-danger">
+            <ng-container
+              *ngIf="(form.invalid || form.controls['confirm'].invalid )&& (form.controls['confirm'].dirty || form.controls['confirm'].touched)"
+              class="alert alert-danger">
               <div class="mb-3">
                 <small class="p-error" *ngIf="form.controls['confirm'].errors?.['required']">
                   Confirm password is required
@@ -89,10 +93,12 @@
               </div>
             </ng-container>
             <div class="mt-2 flex flex-wrap">
-              <p-checkbox id="checkbox" name="termsConditions" formControlName="termsConditions" value="val" styleClass="mr-2"
+              <p-checkbox id="checkbox" name="termsConditions" formControlName="termsConditions" value="val"
+                          styleClass="mr-2"
                           [binary]="true"></p-checkbox>
               <label for="checkbox" class="text-900 font-medium mr-2">I have read the</label>
-              <a class="text-600 cursor-pointer hover:text-primary cursor-pointer">Terms and Conditions</a>
+              <a class="text-600 cursor-pointer hover:text-primary cursor-pointer" (click)="dialog.display=true">Terms
+                and Conditions</a>
             </div>
           </div>
         </div>
@@ -102,7 +108,8 @@
             <button type="button" pButton pRipple label="Cancel" [routerLink]="['/']"
                     class="block p-button-danger p-button-outlined" style="max-width: 320px;
                     margin-bottom: 32px;"></button>
-            <button type="button" pButton pRipple label="Submit" (click)="register()" [disabled]="!form.valid" class="block" style="max-width: 320px;
+            <button type="button" pButton pRipple label="Submit" (click)="register()" [disabled]="!form.valid"
+                    class="block" style="max-width: 320px;
                     margin-bottom: 32px;"></button>
           </div>
 
@@ -120,7 +127,45 @@
         <span class="text-sm text-color-secondary mr-3">Copyright 2023</span>
       </div>
     </div>
-
-
   </div>
 </div>
+
+<!--Terms & Conditions Dialog-->
+<p-dialog header="Terms & Conditions" [(visible)]="dialog.display" [modal]="true" showEffect="fade" [closable]="false"
+          [style]="{width: '30vw'}" [breakpoints]="{'960px': '75vw'}">
+  <p class="line-height-3 m-0">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit
+    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <p class="line-height-3 m-0">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit
+    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <p class="line-height-3 m-0">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit
+    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <p class="line-height-3 m-0">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit
+    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <ng-template pTemplate="footer">
+    <button pButton icon="pi pi-check" (click)="dialog.display=false" label="Ok" class="p-button-outlined"></button>
+  </ng-template>
+</p-dialog>
