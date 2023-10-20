@@ -25,6 +25,7 @@ export class RegisterComponent {
 	constructor(private fb: FormBuilder, private authService: AuthService,
               private router:Router, public layoutService: LayoutService) {
     this.form = this.fb.group({
+      name:'test',
       email: ['test@gmail.com',Validators.required],
       password: ['Password10',Validators.required],
       confirm: ['Password10',Validators.required]
@@ -36,9 +37,10 @@ export class RegisterComponent {
 	}
 
   register() {
+    debugger;
     const val = this.form.value;
     if (val.email && val.password && val.password === val.confirm) {
-      this.authService.register(val.email, val.password)
+      this.authService.register(val.name, val.email, val.password)
         .subscribe({
           next: () => {
             this.router.navigateByUrl('/');

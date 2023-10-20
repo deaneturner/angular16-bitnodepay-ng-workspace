@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
 import { ButtonModule } from 'primeng/button';
@@ -21,7 +21,8 @@ import {AppConfigModule} from "../../../layout/config/app.config.module";
         InputTextModule,
         CheckboxModule,
         AppConfigModule,
-        PasswordModule
+        PasswordModule,
+        ReactiveFormsModule
     ],
     declarations: [RegisterComponent]
 })

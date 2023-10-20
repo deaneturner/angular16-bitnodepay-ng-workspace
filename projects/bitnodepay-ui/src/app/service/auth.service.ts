@@ -31,9 +31,9 @@ export class AuthService {
       .subscribe(user => this.subject.next(user ? user : ANONYMOUS_USER));
   }
 
-  register(email: string, password: string) {
+  register(name: string, email: string, password: string) {
 
-    return this.http.post<User>('/api/register', {email, password}).pipe(
+    return this.http.post<User>('/api/register', {name, email, password}).pipe(
       shareReplay(),
       tap(user => this.subject.next(user)),);
   }
