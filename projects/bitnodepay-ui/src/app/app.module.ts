@@ -23,9 +23,10 @@ import {AuthService} from "./service/auth.service";
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
-    MessageService,
+    {provide: MessageService, useClass: MessageService},
+    {provide: AuthService, useClass: AuthService},
   ],
-  bootstrap: [AppComponent, AuthService,]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
