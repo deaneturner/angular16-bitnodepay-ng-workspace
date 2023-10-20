@@ -30,6 +30,7 @@ export class RegisterComponent {
         email: ['', Validators.required],
         password: ['', Validators.required],
         confirm: ['', Validators.required],
+        termsConditions: [false, Validators.requiredTrue],
       }, {
       validators: confirmPasswordValidator
     });
