@@ -27,36 +27,60 @@
             <span class="block text-600 font-medium mb-4">Let's get started</span>
             <span class="p-input-icon-left">
                           <i class="pi pi-user"></i>
-                          <input name="name" formControlName="name" type="text" autocomplete="off" pInputText
-                                 placeholder="username" class="form-control block" [ngClass]="{'mb-3': !(form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched))}" style="   max-width: 320px;
+                          <input name="name" formControlName="username" type="text" autocomplete="off" pInputText
+                                 placeholder="User Name" class="form-control block mb-3" style="max-width: 320px;
                           min-width: 270px;">
                       </span>
-            <ng-container *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
+            <ng-container *ngIf="form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)"
                  class="alert alert-danger">
               <div class="mb-3">
-                <small *ngIf="form.controls['name'].errors?.['required']">
-                Name is required.
+                <small class="p-error" *ngIf="form.controls['username'].errors?.['required']">
+                User Name is required
               </small>
               </div>
             </ng-container>
             <span class="p-input-icon-left">
                           <i class="pi pi-envelope"></i>
                           <input name="email" formControlName="email" type="mail" autocomplete="off" pInputText
-                                 placeholder="email" class="form-control block mb-3" style="   max-width: 320px;
+                                 placeholder="E-mail" class="form-control block mb-3" style="   max-width: 320px;
                           min-width: 270px;">
                       </span>
+            <ng-container *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
+                          class="alert alert-danger">
+              <div class="mb-3">
+                <small class="p-error" *ngIf="form.controls['email'].errors?.['required']">
+                 E-mail is required
+                </small>
+              </div>
+            </ng-container>
             <span class="p-input-icon-left">
                           <i class="pi pi-key"></i>
                           <input name="password" formControlName="password" type="password" autocomplete="off"
                                  pInputText placeholder="Password" class="form-control block mb-3" style="   max-width: 320px;
                           min-width: 270px;">
                       </span>
+            <ng-container *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"
+                          class="alert alert-danger">
+              <div class="mb-3">
+                <small class="p-error" *ngIf="form.controls['password'].errors?.['required']">
+                  Password is required
+                </small>
+              </div>
+            </ng-container>
             <span class="p-input-icon-left">
                           <i class="pi pi-key"></i>
                           <input name="confirm" formControlName="confirm" type="password" autocomplete="off" pInputText
                                  placeholder="Confirm" class="form-control block mb-3" style="   max-width: 320px;
                           min-width: 270px;">
                       </span>
+            <ng-container *ngIf="form.controls['confirm'].invalid && (form.controls['confirm'].dirty || form.controls['confirm'].touched)"
+                          class="alert alert-danger">
+              <div class="mb-3">
+                <small class="p-error" *ngIf="form.controls['confirm'].errors?.['required']">
+                  Confirm password is required
+                </small>
+              </div>
+            </ng-container>
             <div class="mt-2 flex flex-wrap">
 <!--              <p-checkbox name="checkbox" value="val" [(ngModel)]="confirmed" styleClass="mr-2"-->
 <!--                          [binary]="true"></p-checkbox>-->
