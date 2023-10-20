@@ -58,14 +58,14 @@ export class LogsComponent implements AfterViewInit {
     // var socket = io.connect(host);
     this.socket.on(this.containerId, (data: any) => {
       // self.terminal.write(data);
-      console.log(data);
+      // console.log(data);
     });
     this.socket.emit('getContainersInfo', this.containerId); //  test socket.on containerInfo
     this.socket.on('containerInfo', (obj: any) => {
       self.terminal.write(xtermHelp.lineBreak());
       self.terminal.write(jsonHelp.prettyPrint(obj));
       self.terminal.write(xtermHelp.lineBreak());
-      console.log(JSON.stringify(obj));
+      // console.log(JSON.stringify(obj));
     });
 
     this.socket.on('end', (status: any) => {
