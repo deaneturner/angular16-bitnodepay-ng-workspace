@@ -8,8 +8,8 @@
   </div>
   <div class="w-full" style="background:var(--surface-ground)">
     <div
-      class="p-fluid min-h-screen bg-auto md:bg-contain bg-no-repeat text-center w-full flex align-items-center md:align-items-start justify-content-center flex-column bg-auto md:bg-contain bg-no-repeat"
-      style=" padding: 20% 10% 20% 10%;background:var(--exception-pages-image)">
+      class="p-fluid min-h-screen bg-auto md:bg-contain bg-no-repeat text-center w-full flex align-items-center md:align-items-start justify-content-top flex-column bg-auto md:bg-contain bg-no-repeat"
+      style=" padding: 10% 10% 10% 10%;background:var(--exception-pages-image)">
       <div class="flex flex-column">
         <div class="flex align-items-center mb-6 logo-container">
           <img
@@ -60,9 +60,10 @@
             <!-- password -->
             <span class="p-input-icon-left">
               <i class="pi pi-key"></i>
-                <input name="password" formControlName="password" type="password" autocomplete="off"
-                       pInputText placeholder="Password" class="form-control block mb-3" style="   max-width: 320px;
-                    min-width: 270px;">
+<!--                <input name="password" formControlName="password" type="password" autocomplete="off"-->
+<!--                       pInputText placeholder="Password" class="form-control block mb-3" style="   max-width: 320px;-->
+<!--                    min-width: 270px;">-->
+              <p-password pInputText name="password" formControlName="password" placeholder="Password" [feedback]=false [toggleMask]="true" class="form-control block mb-3"></p-password>
             </span>
              <div class="mb-3">
              <small class="p-error"
@@ -107,10 +108,11 @@
             <!-- confirm -->
             <span class="p-input-icon-left">
                           <i class="pi pi-key"></i>
-                          <input name="confirmPassword" formControlName="confirmPassword" type="password"
-                                 autocomplete="off" pInputText
-                                 placeholder="Confirm your password" class="form-control block mb-3" style="   max-width: 320px;
-                          min-width: 270px;">
+<!--                          <input name="confirmPassword" formControlName="confirmPassword" type="password"-->
+<!--                                 autocomplete="off" pInputText-->
+<!--                                 placeholder="Confirm your password" class="form-control block mb-3" style="   max-width: 320px;-->
+<!--                          min-width: 270px;">-->
+              <p-password pInputText name="confirmPassword" formControlName="confirmPassword" placeholder="Confirm your password" [feedback]=false [toggleMask]="true" class="form-control block mb-3"></p-password>
             </span>
             <div class="mb-3"
                  *ngIf="(submitted || f['confirmPassword'].dirty || f['password'].touched) && f['confirmPassword'].errors">
@@ -163,7 +165,7 @@
 
       </div>
 
-      <div class="login-footer flex align-items-center absolute" style="bottom: 75px;">
+      <div class="login-footer flex align-items-center absolute" style="bottom: 25px;">
         <div class="flex align-items-center login-footer-logo-container pr-4 mr-4 border-right-1 surface-border">
           <img src="../../../../assets/layout/images/logo-gray.png" class="login-footer-logo" style="width: 22px;"/>
           <img src="../../../../assets/layout/images/appname-gray.png" class="login-footer-appname ml-2"
