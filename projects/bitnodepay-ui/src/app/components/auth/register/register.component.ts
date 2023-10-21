@@ -3,7 +3,7 @@ import {LayoutService} from "../../../layout/service/app.layout.service";
 import {AuthService} from "../../../service/auth.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {confirmPasswordValidator} from "../newpassword/newpassword.component";
+import {PasswordValidators} from "../password-validators";
 
 @Component({
   templateUrl: './register.component.html'
@@ -11,6 +11,8 @@ import {confirmPasswordValidator} from "../newpassword/newpassword.component";
 export class RegisterComponent {
 
   form: FormGroup;
+  submitted: boolean = false;
+  isWorking: boolean = false;
 
   errors: string[] = [];
 
@@ -30,13 +32,29 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder, private authService: AuthService,
               private router: Router, public layoutService: LayoutService) {
     this.form = this.fb.group({
-        username: ['', Validators.required],
-        email: ['', Validators.required],
-        password: ['', Validators.required],
-        confirm: ['', Validators.required],
-        termsConditions: [false, Validators.requiredTrue],
-      }, {
-      validators: confirmPasswordValidator
+      username: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[0-9])"), {
+          requiresDigit: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[A-Z])"), {
+          requiresUppercase: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[a-z])"), {
+          requiresLowercase: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[$@^!%*?&])"), {
+          requiresSpecialChars: true
+        })
+      ])],
+      confirmPassword: ['', [Validators.required,
+        Validators.minLength(8)]],
+      termsConditions: [false, Validators.requiredTrue],
+    }, {
+      validators: [PasswordValidators.MatchValidator]
     });
   }
 
@@ -46,20 +64,50 @@ export class RegisterComponent {
 
   register() {
     debugger;
-    const val = this.form.value;
-    if (val.email && val.password && val.password === val.confirm) {
-      this.authService.register(val.name, val.email, val.password)
-        .subscribe({
-          next: () => {
-            this.router.navigateByUrl('/');
+    this.submitted = true;
 
-            console.log("User created successfully")
-          },
-          error: response => this.errors = response.error.errors
-        });
-
+    if (this.form.invalid) {
+      return;
     }
+
+    this.isWorking = true;
+    this.form.disable();
+
+    setTimeout(() => {
+      this.isWorking = false;
+      this.form.enable();
+    }, 1500);
   }
 
-  protected readonly JSON = JSON;
+  get f() {
+    return this.form.controls;
+  }
+
+  get passwordValid() {
+    return this.form.controls["password"].errors === null;
+  }
+
+  get requiredValid() {
+    return !this.form.controls["password"].hasError("required");
+  }
+
+  get minLengthValid() {
+    return !this.form.controls["password"].hasError("minlength");
+  }
+
+  get requiresDigitValid() {
+    return !this.form.controls["password"].hasError("requiresDigit");
+  }
+
+  get requiresUppercaseValid() {
+    return !this.form.controls["password"].hasError("requiresUppercase");
+  }
+
+  get requiresLowercaseValid() {
+    return !this.form.controls["password"].hasError("requiresLowercase");
+  }
+
+  get requiresSpecialCharsValid() {
+    return !this.form.controls["password"].hasError("requiresSpecialChars");
+  }
 }
