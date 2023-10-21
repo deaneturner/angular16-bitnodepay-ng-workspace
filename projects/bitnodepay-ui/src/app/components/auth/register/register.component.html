@@ -63,88 +63,38 @@
                 <input name="password" formControlName="password" type="password" autocomplete="off"
                        pInputText placeholder="Password" class="form-control block mb-3" style="   max-width: 320px;
                     min-width: 270px;">
-              <!--                       [ngClass]="{ 'is-valid': (f['password'].dirty || submitted) && passwordValid, 'is-invalid': (f['password'].dirty || submitted) && !passwordValid }">-->
             </span>
-            <!--            <ng-container-->
-            <!--              *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"-->
-            <!--              class="alert alert-danger">-->
-            <!--              <div class="mb-3">-->
-            <!--                <small class="p-error" *ngIf="form.controls['password'].errors?.['required']">-->
-            <!--                  Password is required-->
-            <!--                </small>-->
-            <!--              </div>-->
-            <!--            </ng-container>-->
-
-            <!-- password -->
-            <!--            <div class="form-group">-->
-            <!--              <label for="password" class="control-label font-weight-bold">Password</label>-->
-            <!--              <input type="password" formControlName="password" class="form-control" name="password" placeholder="Choose a password"-->
-            <!--                     [ngClass]="{ 'is-valid': (f.password.dirty || submitted) && passwordValid, 'is-invalid': (f.password.dirty || submitted) && !passwordValid }" />-->
-            <div class="mb-3">
-              <!-- required -->
-              <!--              <span class="text-danger"-->
-              <!--                    *ngIf="(f['password'].dirty || f['password'].touched || submitted) && !requiredValid">Password is required</span>-->
-              <small class="p-error"
+             <div class="mb-3">
+             <small class="p-error"
                      *ngIf="(f['password'].dirty || f['password'].touched || submitted) && !requiredValid">
                 Password is required
               </small>
-
-              <!-- password validation rules -->
+              <!-- password validation -->
               <div id="validation-rules" class="mt-3 mb-3" *ngIf="requiredValid">
-                <!-- minlength -->
-                <!--                <div [ngClass]="{ 'text-success': minLengthValid, 'text-danger': !minLengthValid }">-->
-                <!--                  <i [attr.class]="minLengthValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>-->
-                <!--                  Must be at least 8 characters long-->
-                <!--                </div>-->
                 <div>
                   <small [ngClass]="{ 'text-green-500': minLengthValid, 'p-error': !minLengthValid }">
                     <i [attr.class]="minLengthValid ? 'pi pi-check' : 'pi pi-flag'"></i>
                     Must be at least 8 characters long
                   </small>
                 </div>
-
-                <!-- requires digit -->
-                <!--                <div [ngClass]="{ 'text-success': requiresDigitValid, 'text-danger': !requiresDigitValid }">-->
-                <!--                  <i [attr.class]="requiresDigitValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>-->
-                <!--                  Must contain at least 1 digit-->
-                <!--                </div>-->
                 <div>
                   <small [ngClass]="{ 'text-green-500': requiresDigitValid, 'p-error': !requiresDigitValid }">
                     <i [attr.class]="requiresDigitValid ? 'pi pi-check' : 'pi pi-flag'"></i>
                     Must contain at least 1 digit
                   </small>
                 </div>
-
-                <!-- requires uppercase -->
-                <!--                <div [ngClass]="{ 'text-success': requiresUppercaseValid, 'text-danger': !requiresUppercaseValid }">-->
-                <!--                  <i [attr.class]="requiresUppercaseValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>-->
-                <!--                  Must contain at least 1 uppercase character-->
-                <!--                </div>-->
                 <div>
                   <small [ngClass]="{ 'text-green-500': requiresUppercaseValid, 'p-error': !requiresUppercaseValid }">
                     <i [attr.class]="requiresUppercaseValid ? 'pi pi-check' : 'pi pi-flag'"></i>
                     Must contain at least 1 uppercase character
                   </small>
                 </div>
-
-                <!-- requires lowercase -->
-                <!--                <div [ngClass]="{ 'text-success': requiresLowercaseValid, 'text-danger': !requiresLowercaseValid }">-->
-                <!--                  <i [attr.class]="requiresLowercaseValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>-->
-                <!--                  Must contain at least 1 lowercase character-->
-                <!--                </div>-->
                 <div>
                   <small [ngClass]="{ 'text-green-500': requiresLowercaseValid, 'p-error': !requiresLowercaseValid }">
                     <i [attr.class]="requiresLowercaseValid ? 'pi pi-check' : 'pi pi-flag'"></i>
                     Must contain at least 1 lowercase character
                   </small>
                 </div>
-
-                <!-- requires special characters -->
-                <!--                <div-->
-                <!--                  [ngClass]="{ 'text-success': requiresSpecialCharsValid, 'text-danger': !requiresSpecialCharsValid }">-->
-                <!--                  <i [attr.class]="requiresSpecialCharsValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>-->
-                <!--                  Must contain at least 1 special character-->
-                <!--                </div>-->
                 <div>
                   <small
                     [ngClass]="{ 'text-green-500': requiresSpecialCharsValid, 'p-error': !requiresSpecialCharsValid }">
@@ -161,9 +111,7 @@
                                  autocomplete="off" pInputText
                                  placeholder="Confirm your password" class="form-control block mb-3" style="   max-width: 320px;
                           min-width: 270px;">
-              <!--                                 [ngClass]="{ 'is-valid': (submitted || f['confirmPassword'].dirty) && !f['confirmPassword'].errors,-->
-              <!--                                 'is-invalid': (submitted || f['confirmPassword'].dirty) && f['confirmPassword'].errors }">-->
-                      </span>
+            </span>
             <div class="mb-3"
                  *ngIf="(submitted || f['confirmPassword'].dirty || f['password'].touched) && f['confirmPassword'].errors">
               <div *ngIf="f['confirmPassword'].errors?.['required']">
@@ -176,33 +124,6 @@
                 <small class="p-error">Passwords do not match</small>
               </div>
             </div>
-            <!--              <ng-container-->
-            <!--                *ngIf="(form.invalid || form.controls['confirm'].invalid )&& (form.controls['confirm'].dirty || form.controls['confirm'].touched)"-->
-            <!--                class="alert alert-danger">-->
-            <!--                <div class="mb-3">-->
-            <!--                  <small class="p-error" *ngIf="form.controls['confirm'].errors?.['required']">-->
-            <!--                    Confirm password is required-->
-            <!--                  </small>-->
-            <!--                </div>-->
-            <!--                <div class="mb-3">-->
-            <!--                  <small class="p-error" *ngIf="form.errors?.['confirmPassword']">-->
-            <!--                    Confirm password must match password-->
-            <!--                  </small>-->
-            <!--                </div>-->
-            <!--              </ng-container>-->
-
-            <!--              <div class="form-group">-->
-            <!--                <label for="confirmPassword" class="control-label font-weight-bold">Confirm password</label>-->
-            <!--                <input type="password" formControlName="confirmPassword" class="form-control" name="confirmPassword" placeholder="Confirm your password"-->
-            <!--                       [ngClass]="{ 'is-valid': (submitted || f.confirmPassword.dirty) && !f.confirmPassword.errors, 'is-invalid': (submitted || f.confirmPassword.dirty) && f.confirmPassword.errors }">-->
-            <!--                <div class="invalid-feedback" *ngIf="(submitted || f.confirmPassword.dirty) && f.confirmPassword.errors">-->
-            <!--                  <div *ngIf="f.confirmPassword.errors.required">Confirm your password</div>-->
-            <!--                  <div *ngIf="f.confirmPassword.errors.minLength">Password must be at least 8 characters long</div>-->
-            <!--                  <div *ngIf="f.confirmPassword.errors.mismatch">Passwords do not match</div>-->
-            <!--                </div>-->
-            <!--              </div>-->
-
-
             <!-- terms and conditions -->
             <div class="mt-2 flex flex-wrap">
               <p-checkbox id="checkbox" name="termsConditions" formControlName="termsConditions" value="val"

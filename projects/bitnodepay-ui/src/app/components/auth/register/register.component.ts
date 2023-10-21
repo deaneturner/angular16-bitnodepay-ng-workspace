@@ -3,7 +3,7 @@ import {LayoutService} from "../../../layout/service/app.layout.service";
 import {AuthService} from "../../../service/auth.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {PasswordValidators} from "../password-validators";
+import {PasswordValidators} from "../validators/password-validators";
 
 @Component({
   templateUrl: './register.component.html'
