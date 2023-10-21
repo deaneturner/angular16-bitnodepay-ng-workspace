@@ -60,9 +60,6 @@
             <!-- password -->
             <span class="p-input-icon-left">
               <i class="pi pi-key"></i>
-<!--                <input name="password" formControlName="password" type="password" autocomplete="off"-->
-<!--                       pInputText placeholder="Password" class="form-control block mb-3" style="   max-width: 320px;-->
-<!--                    min-width: 270px;">-->
               <p-password name="password" formControlName="password" placeholder="Password" [feedback]=false [toggleMask]="true" class="form-control block mb-3"></p-password>
             </span>
              <div class="mb-3">
@@ -108,10 +105,6 @@
             <!-- confirm -->
             <span class="p-input-icon-left">
                           <i class="pi pi-key"></i>
-<!--                          <input name="confirmPassword" formControlName="confirmPassword" type="password"-->
-<!--                                 autocomplete="off" pInputText-->
-<!--                                 placeholder="Confirm your password" class="form-control block mb-3" style="   max-width: 320px;-->
-<!--                          min-width: 270px;">-->
               <p-password name="confirmPassword" formControlName="confirmPassword" placeholder="Confirm your password" [feedback]=false [toggleMask]="true" class="form-control block mb-3"></p-password>
             </span>
             <div class="mb-3"
@@ -148,21 +141,11 @@
                     [disabled]="!form.valid || isWorking"
                     class="block" style="max-width: 320px;
                     margin-bottom: 32px;"></button>
-            <!--            <button type="submit" class="btn btn-block btn-primary" [disabled]="isWorking">-->
-            <!--              <i [attr.class]="isWorking ? 'bi-hourglass-split' : 'bi-check2-square'"></i> {{ isWorking ? 'Working on it...' : 'Create account' }}-->
-            <!--            </button>-->
           </div>
 
           <span class="font-medium text-600">Already have an account? <a
             class="font-semibold cursor-pointer text-900 hover:text-primary transition-colors transition-duration-300">Login</a></span>
         </div>
-
-        <!--        <div class="form-group">-->
-        <!--          <button type="submit" class="btn btn-block btn-primary" [disabled]="isWorking">-->
-        <!--            <i [attr.class]="isWorking ? 'bi-hourglass-split' : 'bi-check2-square'"></i> {{ isWorking ? 'Working on it...' : 'Create account' }}-->
-        <!--          </button>-->
-        <!--        </div>-->
-
       </div>
 
       <div class="login-footer flex align-items-center absolute" style="bottom: 25px;">
