@@ -63,7 +63,7 @@
 <!--                <input name="password" formControlName="password" type="password" autocomplete="off"-->
 <!--                       pInputText placeholder="Password" class="form-control block mb-3" style="   max-width: 320px;-->
 <!--                    min-width: 270px;">-->
-              <p-password pInputText name="password" formControlName="password" placeholder="Password" [feedback]=false [toggleMask]="true" class="form-control block mb-3"></p-password>
+              <p-password name="password" formControlName="password" placeholder="Password" [feedback]=false [toggleMask]="true" class="form-control block mb-3"></p-password>
             </span>
              <div class="mb-3">
              <small class="p-error"
@@ -112,7 +112,7 @@
 <!--                                 autocomplete="off" pInputText-->
 <!--                                 placeholder="Confirm your password" class="form-control block mb-3" style="   max-width: 320px;-->
 <!--                          min-width: 270px;">-->
-              <p-password pInputText name="confirmPassword" formControlName="confirmPassword" placeholder="Confirm your password" [feedback]=false [toggleMask]="true" class="form-control block mb-3"></p-password>
+              <p-password name="confirmPassword" formControlName="confirmPassword" placeholder="Confirm your password" [feedback]=false [toggleMask]="true" class="form-control block mb-3"></p-password>
             </span>
             <div class="mb-3"
                  *ngIf="(submitted || f['confirmPassword'].dirty || f['password'].touched) && f['confirmPassword'].errors">
